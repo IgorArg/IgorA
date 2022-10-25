@@ -1,0 +1,644 @@
+#!/usr/bin/env python
+from sys import argv
+import os
+import copy
+test=""
+if argv[-1]=="-pre":
+   test="pre"
+   argv.pop()
+from tgfInit import *
+from TgfLibrary import GetRealRoutes, GetManeuvres, borderStageITI, GetSection
+#===================================================
+#TGF CUSTOM SCRIPT FOR UPM
+#===================================================
+tgf.tempStorageClear()
+#-------------------------------------------------
+ilsPathOutput=sys.argv[6]
+#-------------------------------------------------
+allCommand=GetRealRoutes("UPM")
+if len(allCommand)==0:
+   sys.exit(0)
+if tgf.getListofLogicalIbits(tgf.getLogicalNamesofType("SECTION")[0]).count("I_SM0")==0:
+   I_SM0="I_SM"
+   I_SM1="I_SM"
+else:
+   I_SM0="I_SM0"
+   I_SM1="I_SM1"
+if tgf.getListofLogicalIbits(tgf.getLogicalNamesofType("SECTION")[0]).count("I_KM0")==0:
+   I_KM0="I_KM"
+   I_KM1="I_KM"
+else:
+   I_KM0="I_KM0"
+   I_KM1="I_KM1"
+#------------------------------------------------- 
+if os.path.exists(ilsPathOutput  +"TI")==False: 
+   os.makedirs(ilsPathOutput  +"TI")     
+tgf.createXMLFile(ilsPathOutput + "TI/2_ALL_UPM.xml")
+tgf.writeFileHeader()
+tgf.writeFunctionHeader("UPM_Routes")
+tgf.writeTestsuiteHeader("UPM in Command Table")
+tchaptNo=1
+tsNo=2
+tcNo=1
+tNo=1
+ilsLoad=1
+#-------------------------------------------------.
+for command in allCommand:
+   if tgf.getLogicalType(command[1])!=("SIGNAL") or tgf.getLogicalType(command[-1]) == ("VSIGNAL"):
+      continue
+
+   Maneuvres=GetManeuvres(command)
+   StartCP="StartCP"
+   count=0
+   ChangePos=0
+   StartLB=""
+   while count < len(Maneuvres):
+         if Maneuvres[count]=="M_SW=1":
+            if tgf.getListofLogicalIbits(Maneuvres[count-1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(Maneuvres[count-1], "I_REL") == "1" and len(tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_POS")) < 2 and tgf.getLogicalIbitValue(Maneuvres[count-1],"I_CPL")!="2":
+               tgf.addResult(Maneuvres[count-1] + ": PUMP_PLUS") 
+               ChangePos+=1
+         if Maneuvres[count]=="M_R_E=1":
+            StartLB=Maneuvres[count-1]
+         count+=1
+   if tgf.getLogicalType(StartLB)=="LINEBLOCK":
+      EndLB=borderStageITI(StartLB)
+      if tgf.getLogicalType(EndLB)=="LINEBLOCK":
+         CheckPoint=StartLB+"_"+EndLB
+   if ChangePos>0:
+      tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+      tId="%s" % (tcId)
+      tgf.writeTestcaseHeader(tcId, "")
+      tgf.setId(tId)
+      tgf.setComment("-")
+      if ilsLoad==1:
+            tgf.addInit("ilsInitCurrent 1")
+            tgf.addInit("ilsLoadCurrent 1")
+            tgf.addInit("execGoCycles 1 45")
+            tgf.addInit("ilsCheckpointRead 1 "+CheckPoint)
+            tgf.addInit("execGoCycles 1 45")
+            ilsLoad+=1    
+      else:
+            tgf.addInit("ilsCheckpointRead 1 "+CheckPoint)
+            tgf.addInit("execGoCycles 1 45")
+      if tgf.getLogicalType(StartLB)=="SALB":
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_PO") +" Occ")
+         tgf.addInit("execGoSeconds 1 2")    
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LP") +" Occ")
+         tgf.addInit("execGoSeconds 1 2")   
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LN") +" Occ")
+         tgf.addInit("execGoSeconds 1 2")
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LN") +" Free")
+         tgf.addInit("execGoSeconds 1 2")
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LP") +" Free")
+         tgf.addInit("execGoSeconds 1 2") 
+      else: 
+         tgf.addEvent("execGoSeconds 1 5")
+      tgf.addEvent("cosCmdSeconds 1 2 " + ' '.join(command))
+      tgf.writeSubtestObj() 
+      tgf.writeTestcaseFooter()
+      tNo+=1
+
+
+   tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+   tId="%s" % (tcId)
+   tgf.writeTestcaseHeader(tcId, "")
+   tgf.setId(tId)
+   tgf.setComment("-")
+   if ilsLoad==1:
+         tgf.addInit("ilsInitCurrent 1")
+         tgf.addInit("ilsLoadCurrent 1")
+         tgf.addInit("execGoCycles 1 45")
+         tgf.addInit("ilsCheckpointRead 1 "+CheckPoint)
+         tgf.addInit("execGoCycles 1 45")
+         ilsLoad+=1    
+   else:
+         tgf.addInit("ilsCheckpointRead 1 "+CheckPoint)
+         tgf.addInit("execGoCycles 1 45")
+   count=0
+   if tgf.getLogicalType(StartLB)=="SALB":
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_PO") +" Occ")
+         tgf.addInit("execGoSeconds 1 2")    
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LP") +" Occ")
+         tgf.addInit("execGoSeconds 1 2")   
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LN") +" Occ")
+         tgf.addInit("execGoSeconds 1 2")
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LN") +" Free")
+         tgf.addInit("execGoSeconds 1 2")
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LP") +" Free")
+         tgf.addInit("execGoSeconds 1 2") 
+   else: 
+      tgf.addEvent("execGoSeconds 1 5")
+   tgf.addEvent("cosCmdSeconds 1 2 " + ' '.join(command))
+   while count < len(Maneuvres):
+         if Maneuvres[count]=="M_SW=1":
+             if tgf.getListofLogicalIbits(Maneuvres[count-1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(Maneuvres[count-1], "I_REL") == "1" and len(tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_POS")) < 2 and tgf.getLogicalIbitValue(Maneuvres[count-1],"I_CPL")!="2":
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_MK") + " Occ")
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_PK") + " Free")
+         count+=1
+   if tgf.getLogicalType(StartLB)=="SALB":
+      tgf.addEvent("execGoSeconds 1 7")
+      tgf.addEvent("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LN") +" Occ")
+   tgf.addEvent("execGoSeconds 1 200")
+   tgf.addResult(command[1] + ": TRPROC")
+   tgf.addResult(command[1] + ": UPM_LCK")
+   tgf.writeSubtestObj() 
+   tgf.writeTestcaseFooter()
+   tNo+=1
+   
+
+   tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+   tId="%s" % (tcId)
+   tgf.writeTestcaseHeader(tcId, "")
+   tgf.setId(tId)
+   tgf.setComment("-")
+   tgf.addInit("continue")
+   tgf.addEvent("execGoSeconds 1 5")
+   tgf.addEvent("cosCmdSeconds 1 2 OM " + command[1])
+   if tgf.getListofLogicalIbits(command[1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(command[1], "I_REL") == "1":
+      tgf.addResult(command[1] + ": O_SIG_RED_REL")
+   else:
+      tgf.addResult(command[1] + ": STOP")
+   tgf.writeSubtestObj()
+   tgf.writeTestcaseFooter()
+   tNo+=1
+
+   tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+   tId="%s" % (tcId)
+   tgf.writeTestcaseHeader(tcId, "")
+   tgf.setId(tId)
+   tgf.setComment("-")
+   tgf.addInit("continue")
+
+   if tgf.getListofLogicalIbits(command[1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(command[1], "I_REL") == "1":
+      tgf.addResult(command[1] + ": O_SIG_RED_REL")
+      if len(tgf.getLogicalStatus2IPU(command[1],"C_BS"))>0:
+         tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_BS") + " Occ")
+      if len(tgf.getLogicalStatus2IPU(command[1],"C_JS"))>0:
+         tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_JS") + " Occ")
+      if len(tgf.getLogicalStatus2IPU(command[1],"C_JSO"))>0:
+         tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_JSO") + " Occ")
+      if len(tgf.getLogicalStatus2IPU(command[1],"C_ZS"))>0:
+         tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_ZS") + " Occ")
+      if len(tgf.getLogicalStatus2IPU(command[1],"C_ZSO"))>0:
+         tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_ZSO") + " Occ")
+      if len(tgf.getLogicalStatus2IPU(command[1],"C_2JS"))>0:
+         tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_2JS") + " Occ")
+   else:
+      tgf.addResult(command[1] + ": STOP")
+   leg=tgf.getLogicalNeighbourLeg(command[1], "0")
+   NextObj=tgf.getLogicalNeighbour(command[1], "0") 
+   while tgf.getLogicalType(NextObj) not in ("SECTION", "ESECTION", "SALB","SALB_E", "HELPBLOCK", "ENDBLOCK", "LINEBLOCK", "POINT"):
+      if leg =="0":
+           leg=tgf.getLogicalNeighbourLeg(NextObj, "1")
+           NextObj=tgf.getLogicalNeighbour(NextObj, "1")
+      else:
+         leg=tgf.getLogicalNeighbourLeg(NextObj, "0")
+         NextObj=tgf.getLogicalNeighbour(NextObj, "0")
+   From=NextObj
+   if tgf.getLogicalType(NextObj)!="ENDBLOCK" and test!="pre":
+      tgf.addEvent("execGoSeconds 1 6")
+   else:
+      tgf.addEvent("execGoSeconds 1 185")
+   tgf.addResult(command[1] + ": UPM_NOLCK")
+   tgf.writeSubtestObj()
+   tgf.writeTestcaseFooter()
+   tNo+=1
+
+   ChangePos=0
+   count=0
+   while count < len(Maneuvres):
+         if Maneuvres[count]=="M_SW=2":
+            if tgf.getListofLogicalIbits(Maneuvres[count-1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(Maneuvres[count-1], "I_REL") == "1" and len(tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_POS")) < 2 and tgf.getLogicalIbitValue(Maneuvres[count-1],"I_CPL")!="2":
+               tgf.addResult(Maneuvres[count-1] + ": PUMP_MIN") 
+               ChangePos+=1
+         count+=1
+   if ChangePos>0:
+         tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+         tId="%s" % (tcId)
+         tgf.writeTestcaseHeader(tcId, "")
+         tgf.setId(tId)
+         tgf.setComment("-")
+         tgf.addInit("ilsCheckpointRead 1 "+CheckPoint +"_PLUS")
+         if tgf.getLogicalType(StartLB)=="SALB":
+             tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_PO") +" Occ")
+             tgf.addInit("execGoSeconds 1 2")    
+             tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LP") +" Occ")
+             tgf.addInit("execGoSeconds 1 2")   
+             tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LN") +" Occ")
+             tgf.addInit("execGoSeconds 1 2")
+             tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LN") +" Free")
+             tgf.addInit("execGoSeconds 1 2")
+             tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LP") +" Free")
+             tgf.addInit("execGoSeconds 1 2") 
+         else: 
+            tgf.addEvent("execGoSeconds 1 5")
+         tgf.addEvent("cosCmdSeconds 1 2 " + ' '.join(command))
+         tgf.writeSubtestObj() 
+         tgf.writeTestcaseFooter()
+         tNo+=1
+
+
+   tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+   tId="%s" % (tcId)
+   tgf.writeTestcaseHeader(tcId, "")
+   tgf.setId(tId)
+   tgf.setComment("-")
+   tgf.addInit("ilsCheckpointRead 1 "+CheckPoint +"_PLUS")
+   tgf.addInit("execGoCycles 1 45")
+   count=0
+   if tgf.getLogicalType(StartLB)=="SALB":
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_PO") +" Occ")
+         tgf.addInit("execGoSeconds 1 2")    
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LP") +" Occ")
+         tgf.addInit("execGoSeconds 1 2")   
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LN") +" Occ")
+         tgf.addInit("execGoSeconds 1 2")
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LN") +" Free")
+         tgf.addInit("execGoSeconds 1 2")
+         tgf.addInit("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LP") +" Free")
+         tgf.addInit("execGoSeconds 1 2") 
+   else: 
+         tgf.addEvent("execGoSeconds 1 5")
+   tgf.addEvent("cosCmdSeconds 1 2 " + ' '.join(command) )
+   while count < len(Maneuvres):
+         if Maneuvres[count]=="M_SW=2":
+            if tgf.getListofLogicalIbits(Maneuvres[count-1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(Maneuvres[count-1], "I_REL") == "1" and len(tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_POS")) < 2 and tgf.getLogicalIbitValue(Maneuvres[count-1],"I_CPL")!="2":
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_PK") + " Occ")
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_MK") + " Free")
+         count+=1
+   if tgf.getLogicalType(StartLB)=="SALB":
+      tgf.addEvent("execGoSeconds 1 7")
+      tgf.addEvent("yardSetStatusTry 1 " + tgf.getLogicalStatus2IPU(StartLB, "C_PAB_LN") +" Occ")
+   tgf.addEvent("execGoSeconds 1 250")  
+   tgf.addResult(command[1] + ": TRPROC")
+   tgf.addResult(command[1] + ": UPM_LCK")
+   tgf.writeSubtestObj() 
+   tgf.writeTestcaseFooter()
+   tNo+=1   
+   
+
+   if test=="pre":
+      continue
+   print command
+   C_TC0=""
+   count=0
+   leg=tgf.getLogicalNeighbourLeg(command[1], "0")
+   NextObj=tgf.getLogicalNeighbour(command[1], "0")
+   while count<5 and (tgf.getLogicalType(NextObj) not in ("HELPBLOCK_R4", "HELPBLOCK", "SALB","SALB_E", "ENDBLOCK","POINT")):
+         
+         if tgf.getLogicalType(NextObj)=="SECTION":
+            if len(tgf.getLogicalStatus2IPU(NextObj, "C_TC"))>2:
+               C_TC0=tgf.getLogicalStatus2IPU(NextObj, "C_TC")
+               break
+            else:
+               if len(tgf.getLogicalStatus2IPU(NextObj, "C_TCA"))>2:
+                  C_TC0=tgf.getLogicalStatus2IPU(NextObj, "C_TCA")
+                  break                  
+         if tgf.getLogicalType(NextObj)=="LINE":        
+            if len(tgf.getLogicalStatus2IPU(NextObj, "C_TC1"))>2:
+               C_TC0=tgf.getLogicalStatus2IPU(NextObj, "C_TC1")
+               break  
+         if tgf.getLogicalType(NextObj)=="LINEBLOCK": 
+            print NextObj
+            if len(tgf.getLogicalStatus2IPU(NextObj, "C_1IPU"))>2:
+               C_TC0=tgf.getLogicalStatus2IPU(NextObj, "C_1IPU")
+               break  
+         count+=1       
+         if leg=="0":
+            leg=tgf.getLogicalNeighbourLeg(NextObj, "1")
+            NextObj=tgf.getLogicalNeighbour(NextObj, "1")
+            continue
+         if leg=="1":
+            leg=tgf.getLogicalNeighbourLeg(NextObj, "0")
+            NextObj=tgf.getLogicalNeighbour(NextObj, "0")  
+   else:
+      C_TC0=tgf.getLogicalStatus2IPU(command[1], "C_TC0")
+   if C_TC0=="":
+      C_TC0=GetSection(command[1], "C_TC")
+      if C_TC0=="0":
+         print "Error C_TC0 in " +command[1]
+         C_TC0=""
+   else:
+
+
+      tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+      tId="%s" % (tcId)
+      tgf.writeTestcaseHeader(tcId, "")
+      tgf.setId(tId)
+      tgf.setComment("-")
+      tgf.addInit("continue")
+      tgf.addEvent("yardSetStatusTryCycles 1 0 " + C_TC0 + " Occ")
+      tgf.addEvent("execGoSeconds 1 10")
+      tgf.addEvent("cosCmdSeconds 1 2 OM " + command[1])
+      if tgf.getListofLogicalIbits(command[1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(command[1], "I_REL") == "1":
+            tgf.addResult(command[1] + ": O_SIG_RED_REL")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_BS"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_BS") + " Occ")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_JS"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_JS") + " Occ")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_JSO"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_JSO") + " Occ")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_ZS"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_ZS") + " Occ")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_ZSO"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_ZSO") + " Occ")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_2JS"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_2JS") + " Occ")
+      else:
+         tgf.addResult(command[1] + ": STOP")
+      tgf.addEvent("execGoSeconds 1 6")
+      tgf.addResult(command[1] + ": UPM_LCK")
+      tgf.writeSubtestObj()
+      tgf.writeTestcaseFooter()
+      tNo+=1
+
+      tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+      tId="%s" % (tcId)
+      tgf.writeTestcaseHeader(tcId, "")
+      tgf.setId(tId)
+      tgf.setComment("-")
+      tgf.addInit("continue")
+      tgf.addEvent("execGoSeconds 1 185")
+      if tgf.getListofLogicalIbits(command[1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(command[1], "I_REL") == "1":
+         tgf.addResult(command[1] + ": O_SIG_RED_REL")
+      else:
+         tgf.addResult(command[1] + ": STOP")
+
+      tgf.addResult(command[1] + ": UPM_NOLCK")
+      tgf.writeSubtestObj()
+      tgf.writeTestcaseFooter()
+      tNo+=1
+
+#----------------------------------------------------    
+   SectionPTMT=[]
+   ArrayOfSection=[]
+   NextObj=tgf.getLogicalNeighbour(command[1], "1")
+   leg=tgf.getLogicalNeighbourLeg(command[1], "1")
+   while NextObj!=StartLB and NextObj!=command[-1]:
+      if tgf.getLogicalType(NextObj)=="SECTION" and tgf.getLogicalIbitValue(NextObj, I_SM0) != "2" and tgf.getLogicalIbitValue(NextObj, I_SM1) != "2":
+         ArrayOfSection.append(NextObj)
+      if leg=="0":
+         if tgf.getLogicalType(NextObj)=="POINT":
+            count=0
+            while count < len(Maneuvres):
+               if Maneuvres[count]==NextObj:
+                  if Maneuvres[count+1]=="M_SW=1":
+                     leg=tgf.getLogicalNeighbourLeg(NextObj, "1")
+                     NextObj=tgf.getLogicalNeighbour(NextObj, "1")
+                     break
+                  elif Maneuvres[count+1]=="M_SW=2":
+                     leg=tgf.getLogicalNeighbourLeg(NextObj, "2")
+                     NextObj=tgf.getLogicalNeighbour(NextObj, "2")
+                     break
+               count+=1
+         else:
+           leg=tgf.getLogicalNeighbourLeg(NextObj, "1")
+           NextObj=tgf.getLogicalNeighbour(NextObj, "1")
+      else:
+         leg=tgf.getLogicalNeighbourLeg(NextObj, "0")
+         NextObj=tgf.getLogicalNeighbour(NextObj, "0")
+   
+   if tgf.getLogicalType(StartLB) in ("SECTION", "ESECTION"):
+       if tgf.getLogicalType(NextObj)=="SECTION" and tgf.getLogicalIbitValue(NextObj, I_SM0) != "2" and tgf.getLogicalIbitValue(NextObj, I_SM1) != "2":
+          ArrayOfSection.append(StartLB)
+   if tgf.getLogicalType(StartLB)=="SIGNAL" and tgf.getLogicalIbitValue(command[-1], "I_PTMT")!="0":
+      SectionPTMT=copy.deepcopy(ArrayOfSection[-2:])
+      ArrayOfSection.pop()
+      ArrayOfSection.pop()
+   count=0
+   print ArrayOfSection
+   while count<len(ArrayOfSection):
+      if tgf.getListofLogicalIbits(ArrayOfSection[count]).count("I_TTC")==0 or (tgf.getListofLogicalIbits(ArrayOfSection[count]).count("I_TTC")!=0 and tgf.getLogicalIbitValue(ArrayOfSection[count],"I_TTC")=="0"):
+         if len(tgf.getLogicalStatus2IPU(ArrayOfSection[count], "C_TC"))<2:
+            ArrayOfSection.pop(count)
+            continue
+      count+=1
+
+   Start2=""
+   route2=""
+   if tgf.getLogicalType(StartLB)=="SECTION":
+      if tgf.getListofLogicalIbits(StartLB).count("I_KM0")!=0:
+         if tgf.getLogicalIbitValue(StartLB, "I_KM"+leg)!= "2":
+            Start2=command[-1]
+      else:
+         if tgf.getLogicalIbitValue(StartLB, "I_KM")!= "2":
+            Start2=command[-1] 
+   print Start2   
+   doubleRoute=0 
+
+   if Start2!="":
+       
+      doubleRoute=1
+      for command2 in allCommand:
+         if command2[1]==Start2:
+            
+            if len(command2[-1])<3:
+               command2=command2.pop() 
+            Maneuvres2=GetManeuvres(command2)
+            route2=command2
+            
+            NextObj=tgf.getLogicalNeighbour(command2[1], "1")
+            leg=tgf.getLogicalNeighbourLeg(command2[1], "1")
+            while (tgf.getLogicalType(NextObj) not in ("SECTION", "ENDBLOCK", "SHSIGNAL", "SIGNAL","HELPBLOCK")) or (tgf.getLogicalType(NextObj)=="SECTION" and (tgf.getLogicalIbitValue(NextObj, I_SM1)== "2" and tgf.getLogicalIbitValue(NextObj, I_SM0)== "2")):
+               if leg=="0":
+                  if tgf.getLogicalType(NextObj)=="POINT":
+                     count=0
+                     while count < len(Maneuvres2):
+                        if Maneuvres2[count]==NextObj:
+                           if Maneuvres2[count+1]=="M_SW=1":
+                              leg=tgf.getLogicalNeighbourLeg(NextObj, "1")
+                              NextObj=tgf.getLogicalNeighbour(NextObj, "1")
+                              break
+                           elif Maneuvres2[count+1]=="M_SW=2":
+                              leg=tgf.getLogicalNeighbourLeg(NextObj, "2")
+                              NextObj=tgf.getLogicalNeighbour(NextObj, "2")
+                              break
+                        count+=1
+                  else:
+                    leg=tgf.getLogicalNeighbourLeg(NextObj, "1")
+                    NextObj=tgf.getLogicalNeighbour(NextObj, "1")
+               else:
+                  leg=tgf.getLogicalNeighbourLeg(NextObj, "0")
+                  NextObj=tgf.getLogicalNeighbour(NextObj, "0")
+
+            if tgf.getLogicalType(NextObj)=="SECTION" and  tgf.getLogicalType(NextObj)=="SECTION" and tgf.getLogicalIbitValue(NextObj, I_SM0) != "2" and tgf.getLogicalIbitValue(NextObj, I_SM1) != "2":
+               ArrayOfSection.append(NextObj)
+            break
+   print route2
+
+
+   if len(ArrayOfSection)>0:
+      if C_TC0!="":
+         tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+         tId="%s" % (tcId)
+         tgf.writeTestcaseHeader(tcId, "")
+         tgf.setId(tId)
+
+         tgf.setComment("-")
+         tgf.addInit("ilsCheckpointRead 1 "+StartCP)
+         tgf.addEvent("cosCmdSeconds 1 2 " + ' '.join(command))
+         count=0
+         while count < len(Maneuvres):
+            if Maneuvres[count]=="M_SW=1":
+                if tgf.getListofLogicalIbits(Maneuvres[count-1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(Maneuvres[count-1], "I_REL") == "1" and len(tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_POS")) < 2 and tgf.getLogicalIbitValue(Maneuvres[count-1],"I_CPL")!="2":
+                  tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_MK") + " Occ")
+                  tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(Maneuvres[count-1],"C_PK") + " Free")
+            count+=1
+         tgf.addEvent("execGoSeconds 1 200")
+         tgf.addEvent("yardSetStatusTryCycles 1 0 " + C_TC0 +" Occ")
+         tgf.addEvent("execGoSeconds 1 5")
+         count=0
+         n=0
+         if route2!="":
+            n=1
+         while count<len(ArrayOfSection)-n:
+            tgf.addResult(ArrayOfSection[count] + ": LCK_IND") 
+            count+=1
+         tgf.addResult(command[1] + ": TRPROC")
+         tgf.addResult(command[1] + ": UPM_LCK")
+         tgf.writeSubtestObj()
+         tgf.writeTestcaseFooter()
+         tNo+=1     
+      count=0
+      tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+      tId="%s" % (tcId)
+      tgf.writeTestcaseHeader(tcId, "")
+      tgf.setId(tId)
+      tgf.setComment("-")
+      tgf.addInit("continue")
+      if route2!="":
+         print "first route"
+         print command
+         print "second route"
+         print route2
+         count3=0
+         if C_TC0!="":
+            M_SW="M_SW=2"
+         tgf.addEvent("cosCmdSeconds 1 2 " + ' '.join(route2))           
+         while count3 < len(Maneuvres2):
+             if Maneuvres2[count3]=="M_SW=1":
+                   if tgf.getListofLogicalIbits(Maneuvres2[count3-1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(Maneuvres2[count3-1], "I_REL") == "1" and len(tgf.getLogicalStatus2IPU(Maneuvres2[count3-1],"C_POS")) < 2 and tgf.getLogicalIbitValue(Maneuvres2[count3-1],"I_CPL")!="2":
+
+                      tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(Maneuvres2[count3-1],"C_MK") + " Occ")
+                      tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(Maneuvres2[count3-1],"C_PK") + " Free")
+             count3+=1
+         tgf.addEvent("execGoSeconds 1 200")
+      if len(tgf.getLogicalStatus2IPU(ArrayOfSection[0], "C_TC"))>0:
+         tgf.addEvent("yardSetStatusTrySeconds 1 2 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[0], "C_TC") + " Occ" )
+      else:
+         tgf.addEvent("yardSetStatusTrySeconds 1 2 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[0], "C_TCA") + " Occ" )
+      if tgf.getListofLogicalIbits(command[1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(command[1], "I_REL") == "1":
+            tgf.addEvent("execGoSeconds 1 3")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_BS"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_BS") + " Occ")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_JS"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_JS") + " Occ")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_JSO"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_JSO") + " Occ")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_ZS"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_ZS") + " Occ")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_ZSO"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_ZSO") + " Occ")
+            if len(tgf.getLogicalStatus2IPU(command[1],"C_2JS"))>0:
+               tgf.addEvent("yardSetStatusTryCycles 1 0 " + tgf.getLogicalStatus2IPU(command[1],"C_2JS") + " Occ")
+      tgf.addEvent("execGoSeconds 1 10")
+     
+      if C_TC0!="":
+         tgf.addEvent("yardSetStatusTry 1 " + C_TC0 +" Free")
+      tgf.addEvent("execGoSeconds 1 10")
+      if tgf.getLogicalType(From)=="ENDBLOCK" and len(ArrayOfSection)>2:
+         if len(tgf.getLogicalStatus2IPU(ArrayOfSection[1], "C_TC"))>0:
+            tgf.addEvent("yardSetStatusTrySeconds 1 2 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[1], "C_TC") + " Occ" )
+         elif len(tgf.getLogicalStatus2IPU(ArrayOfSection[1], "C_TCA"))>0:
+            tgf.addEvent("yardSetStatusTrySeconds 1 2 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[1], "C_TCA") + " Occ" )
+         tgf.addEvent("execGoSeconds 1 10")    
+         if len(tgf.getLogicalStatus2IPU(ArrayOfSection[0], "C_TC"))>0:
+            tgf.addEvent("yardSetStatusTrySeconds 1 2 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[0], "C_TC") + " Free" )
+         elif len(tgf.getLogicalStatus2IPU(ArrayOfSection[0], "C_TCA"))>0:
+            tgf.addEvent("yardSetStatusTrySeconds 1 2 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[0], "C_TCA") + " Free" )     
+         tgf.addEvent("execGoSeconds 1 10")    
+      if tgf.getListofLogicalIbits(command[1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(command[1], "I_REL") == "1":
+         tgf.addResult(command[1] + ": O_SIG_RED_REL")
+      else:
+         tgf.addResult(command[1] + ": STOP")
+      countTS=count
+      if countTS!=len(ArrayOfSection)-1 or tgf.getLogicalType(StartLB)=="LINEBLOCK" or tgf.getLogicalType(StartLB)=="SALB":
+         while countTS<len(ArrayOfSection):
+            tgf.addResult(ArrayOfSection[countTS] + ": LCK_IND") 
+            countTS+=1
+      else: 
+         tgf.addResult(ArrayOfSection[countTS] + ": UNLCK_IND")
+         for Section in SectionPTMT:
+            tgf.addResult(Section + ": UNLCK_IND") 
+      countTS=count-1
+      while countTS>=0:
+         tgf.addResult(ArrayOfSection[countTS] + ": UNLCK_IND") 
+         countTS-=1
+      tgf.writeSubtestObj()
+      tgf.writeTestcaseFooter()
+      tNo+=1
+      count+=1         
+
+   if tgf.getLogicalType(From)=="ENDBLOCK" and len(ArrayOfSection)>2:
+      count=2 
+   else:
+      count=1
+
+   while count<len(ArrayOfSection):
+      tcId="%d.%d.%d.%d" % (tchaptNo, tsNo, tcNo, tNo)
+      tId="%s" % (tcId)
+      tgf.writeTestcaseHeader(tcId, "")
+      tgf.setId(tId)
+      tgf.setComment("-")
+      tgf.addInit("continue")
+      if tgf.getListofLogicalIbits(ArrayOfSection[count]).count("I_TTC")==0 or (tgf.getListofLogicalIbits(ArrayOfSection[count]).count("I_TTC")!=0 and tgf.getLogicalIbitValue(ArrayOfSection[count],"I_TTC")=="0"):
+         tgf.addEvent("yardSetStatusTry 1 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[count], "C_TC") + " Occ" )
+      else:
+         tgf.addEvent("yardSetStatusTry 1 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[count], "C_TCA") + " Occ" )
+      tgf.addEvent("execGoSeconds 1 10")
+      if tgf.getListofLogicalIbits(ArrayOfSection[count-1]).count("I_TTC")==0 or (tgf.getListofLogicalIbits(ArrayOfSection[count-1]).count("I_TTC")!=0 and tgf.getLogicalIbitValue(ArrayOfSection[count-1],"I_TTC")=="0"):
+         tgf.addEvent("yardSetStatusTry 1 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[count-1], "C_TC") + " Free" )
+      else:
+         tgf.addEvent("yardSetStatusTry 1 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[count-1], "C_TCA") + " Free" )
+      tgf.addEvent("execGoSeconds 1 10")
+      if tgf.getListofLogicalIbits(command[1]).count("I_REL")!=0 and tgf.getLogicalIbitValue(command[1], "I_REL") == "1":
+         tgf.addResult(command[1] + ": O_SIG_RED_REL")
+      else:
+         tgf.addResult(command[1] + ": STOP")
+      countTS=count
+      if count==len(ArrayOfSection)-1 and tgf.getLogicalType(StartLB)=="ENDBLOCK" and len(tgf.getLogicalStatus2IPU(command[-1], "C_TC0"))>0:
+         tgf.addEvent("yardSetStatusTry 1 "+ tgf.getLogicalStatus2IPU(command[-1], "C_TC0") + " Occ" )
+         tgf.addEvent("execGoSeconds 1 10")
+         if tgf.getListofLogicalIbits(ArrayOfSection[count]).count("I_TTC")==0 or (tgf.getListofLogicalIbits(ArrayOfSection[count]).count("I_TTC")!=0 and tgf.getLogicalIbitValue(ArrayOfSection[count],"I_TTC")=="0"):
+            tgf.addEvent("yardSetStatusTry 1 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[count], "C_TC") + " Free" )
+         else:
+            tgf.addEvent("yardSetStatusTry 1 "+ tgf.getLogicalStatus2IPU(ArrayOfSection[count], "C_TCA") + " Free" )
+      if countTS!=len(ArrayOfSection)-1 or tgf.getLogicalType(StartLB) in ("LINEBLOCK" , "SALB" , "LINEBLOCK2000"):
+         while countTS<len(ArrayOfSection):
+            tgf.addResult(ArrayOfSection[countTS] + ": LCK_IND") 
+            countTS+=1
+      else: 
+         if StartLB in ("EB1DP", "EB2DP"):
+            tgf.addResult(ArrayOfSection[countTS] + ": UNLCK_IND")
+         for Section in SectionPTMT:
+            tgf.addResult(Section + ": UNLCK_IND") 
+      countTS=count-1
+      while countTS>=0:
+         tgf.addResult(ArrayOfSection[countTS] + ": UNLCK_IND") 
+         countTS-=1
+      tgf.writeSubtestObj()
+      tgf.writeTestcaseFooter()
+      tNo+=1
+      count+=1
+
+
+
+
+#----------------------------------------------------
+tgf.writeTestsuiteFooter()
+tgf.writeFunctionFooter()
+tgf.writeFileFooter()
+tgf.closeXMLFile()
+#--------------------------------------------
+
+sys.exit(0)
