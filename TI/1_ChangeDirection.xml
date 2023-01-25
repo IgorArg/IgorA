@@ -1,0 +1,2268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Functions>
+   <Function name="ChangeDirection">
+      <TestSuite name="ChangeDirectionCase">
+         <TestCase id="32.1.1.1" name="">
+            <Test id="32.1.1.1">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsInitCurrent 1</Event>
+                  <Event>ilsLoadCurrent 1</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>calcTraceOn 1</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LB1C</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBN2</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LB1C_LBN2</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBN2: IN</Result>
+                  <Result>LBN2: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBN2: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB1C: OUT</Result>
+                  <Result>LB1C: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB1C: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN6_1CN: O_CODE_G</Result>
+                  <Result>LN4_6N: O_CODE_G</Result>
+                  <Result>LN2_4N: O_CODE_G</Result>
+                  <Result>LN2_NDN: O_CODE_Y</Result>
+                  <Result>LN6_1CC: DARK_VIRT</Result>
+                  <Result>LN4_6C: DARK_VIRT</Result>
+                  <Result>LN2_4C: DARK_VIRT</Result>
+                  <Result>LN2_NDC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.2" name="">
+            <Test id="32.1.1.2">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LB1C</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBN2</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LB1C_LBN2_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBN2: IN</Result>
+                  <Result>LBN2: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBN2: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB1C: OUT</Result>
+                  <Result>LB1C: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB1C: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN6_1CN: O_CODE_G</Result>
+                  <Result>LN4_6N: O_CODE_G</Result>
+                  <Result>LN2_4N: O_CODE_G</Result>
+                  <Result>LN2_NDN: O_CODE_Y</Result>
+                  <Result>LN6_1CC: DARK_VIRT</Result>
+                  <Result>LN4_6C: DARK_VIRT</Result>
+                  <Result>LN2_4C: DARK_VIRT</Result>
+                  <Result>LN2_NDC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.3" name="">
+            <Test id="32.1.1.3">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LB1CD</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBN1</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LB1CD_LBN1</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBN1: IN</Result>
+                  <Result>LBN1: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBN1: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB1CD: OUT</Result>
+                  <Result>LB1CD: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB1CD: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN1CD_1N: O_CODE_G</Result>
+                  <Result>LN1_3N: SIG_G</Result>
+                  <Result>LN3_5N: SIG_G</Result>
+                  <Result>LN5_NN: SIG_Y</Result>
+                  <Result>LN1CD_1C: DARK_VIRT</Result>
+                  <Result>LN1_3C: DARK_VIRT</Result>
+                  <Result>LN3_5C: DARK_VIRT</Result>
+                  <Result>LN5_NC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.4" name="">
+            <Test id="32.1.1.4">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LB1CD</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBN1</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LB1CD_LBN1_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBN1: IN</Result>
+                  <Result>LBN1: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBN1: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB1CD: OUT</Result>
+                  <Result>LB1CD: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB1CD: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN1CD_1N: O_CODE_G</Result>
+                  <Result>LN1_3N: SIG_G</Result>
+                  <Result>LN3_5N: SIG_G</Result>
+                  <Result>LN5_NN: SIG_Y</Result>
+                  <Result>LN1CD_1C: DARK_VIRT</Result>
+                  <Result>LN1_3C: DARK_VIRT</Result>
+                  <Result>LN3_5C: DARK_VIRT</Result>
+                  <Result>LN5_NC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.5" name="">
+            <Test id="32.1.1.5">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBC1</Event>
+                  <Event>cosCmdCycles 1 8 ABS LB2N</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBC1_LB2N</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB2N: IN</Result>
+                  <Result>LB2N: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB2N: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBC1: OUT</Result>
+                  <Result>LBC1: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBC1: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_7N: O_CODE_G</Result>
+                  <Result>LN7_9N: SIG_G</Result>
+                  <Result>LN9_11N: SIG_G</Result>
+                  <Result>LN11_2NN: O_CODE_Y</Result>
+                  <Result>LNCD_7C: DARK_VIRT</Result>
+                  <Result>LN7_9C: DARK_VIRT</Result>
+                  <Result>LN9_11C: DARK_VIRT</Result>
+                  <Result>LN11_2NC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.6" name="">
+            <Test id="32.1.1.6">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBC1</Event>
+                  <Event>cosCmdCycles 1 8 ABS LB2N</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBC1_LB2N_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB2N: IN</Result>
+                  <Result>LB2N: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB2N: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBC1: OUT</Result>
+                  <Result>LBC1: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBC1: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_7N: O_CODE_G</Result>
+                  <Result>LN7_9N: SIG_G</Result>
+                  <Result>LN9_11N: SIG_G</Result>
+                  <Result>LN11_2NN: O_CODE_Y</Result>
+                  <Result>LNCD_7C: DARK_VIRT</Result>
+                  <Result>LN7_9C: DARK_VIRT</Result>
+                  <Result>LN9_11C: DARK_VIRT</Result>
+                  <Result>LN11_2NC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.7" name="">
+            <Test id="32.1.1.7">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBC2</Event>
+                  <Event>cosCmdCycles 1 8 ABS LB2ND</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBC2_LB2ND</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB2ND: IN</Result>
+                  <Result>LB2ND: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB2ND: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBC2: OUT</Result>
+                  <Result>LBC2: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBC2: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN12_CN: O_CODE_G</Result>
+                  <Result>LN10_12N: SIG_G</Result>
+                  <Result>LN8_10N: SIG_G</Result>
+                  <Result>LN8_2NDN: O_CODE_Y</Result>
+                  <Result>LN12_CC: DARK_VIRT</Result>
+                  <Result>LN10_12C: DARK_VIRT</Result>
+                  <Result>LN8_10C: DARK_VIRT</Result>
+                  <Result>LN8_2NDC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.8" name="">
+            <Test id="32.1.1.8">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBC2</Event>
+                  <Event>cosCmdCycles 1 8 ABS LB2ND</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBC2_LB2ND_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB2ND: IN</Result>
+                  <Result>LB2ND: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB2ND: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBC2: OUT</Result>
+                  <Result>LBC2: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBC2: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN12_CN: O_CODE_G</Result>
+                  <Result>LN10_12N: SIG_G</Result>
+                  <Result>LN8_10N: SIG_G</Result>
+                  <Result>LN8_2NDN: O_CODE_Y</Result>
+                  <Result>LN12_CC: DARK_VIRT</Result>
+                  <Result>LN10_12C: DARK_VIRT</Result>
+                  <Result>LN8_10C: DARK_VIRT</Result>
+                  <Result>LN8_2NDC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.9" name="">
+            <Test id="32.1.1.9">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBNDR</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBCR_LBNDR</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNDR: IN</Result>
+                  <Result>LBNDR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNDR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCR: OUT</Result>
+                  <Result>LBCR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_1NR: O_CODE_G</Result>
+                  <Result>LN1_NNR: O_CODE_Y</Result>
+                  <Result>LNC_1CR: DARK_VIRT</Result>
+                  <Result>LN1_NCR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.10" name="">
+            <Test id="32.1.1.10">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBNDR</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBCR_LBNDR_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNDR: IN</Result>
+                  <Result>LBNDR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNDR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCR: OUT</Result>
+                  <Result>LBCR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_1NR: O_CODE_G</Result>
+                  <Result>LN1_NNR: O_CODE_Y</Result>
+                  <Result>LNC_1CR: DARK_VIRT</Result>
+                  <Result>LN1_NCR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.11" name="">
+            <Test id="32.1.1.11">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBCDT</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBCDT_LBNT</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNT: IN</Result>
+                  <Result>LBNT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCDT: OUT</Result>
+                  <Result>LBCDT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCDT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_1NT: O_CODE_G</Result>
+                  <Result>LN1_3NT: SIG_G</Result>
+                  <Result>LN3_NNT: SIG_Y</Result>
+                  <Result>LNCD_1CT: DARK_VIRT</Result>
+                  <Result>LN1_3CT: DARK_VIRT</Result>
+                  <Result>LN3_NCT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.12" name="">
+            <Test id="32.1.1.12">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBCDT</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBCDT_LBNT_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNT: IN</Result>
+                  <Result>LBNT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCDT: OUT</Result>
+                  <Result>LBCDT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCDT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_1NT: O_CODE_G</Result>
+                  <Result>LN1_3NT: SIG_G</Result>
+                  <Result>LN3_NNT: SIG_Y</Result>
+                  <Result>LNCD_1CT: DARK_VIRT</Result>
+                  <Result>LN1_3CT: DARK_VIRT</Result>
+                  <Result>LN3_NCT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.13" name="">
+            <Test id="32.1.1.13">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBNR</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBCDR_LBNR</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNR: IN</Result>
+                  <Result>LBNR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCDR: OUT</Result>
+                  <Result>LBCDR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCDR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_2NR: O_CODE_G</Result>
+                  <Result>LN2_NDNR: SIG_Y</Result>
+                  <Result>LNCD_2CR: DARK_VIRT</Result>
+                  <Result>LN2_NDCR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.14" name="">
+            <Test id="32.1.1.14">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBNR</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBCDR_LBNR_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNR: IN</Result>
+                  <Result>LBNR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCDR: OUT</Result>
+                  <Result>LBCDR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCDR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_2NR: O_CODE_G</Result>
+                  <Result>LN2_NDNR: SIG_Y</Result>
+                  <Result>LNCD_2CR: DARK_VIRT</Result>
+                  <Result>LN2_NDCR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.15" name="">
+            <Test id="32.1.1.15">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBCT</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBCT_LBNDT</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNDT: IN</Result>
+                  <Result>LBNDT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNDT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCT: OUT</Result>
+                  <Result>LBCT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_NDCT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.16" name="">
+            <Test id="32.1.1.16">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBCT</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBCT_LBNDT_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNDT: IN</Result>
+                  <Result>LBNDT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNDT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCT: OUT</Result>
+                  <Result>LBCT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_NDCT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.17" name="">
+            <Test id="32.1.1.17">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBN1</Event>
+                  <Event>cosCmdCycles 1 8 ABS LB1CD</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBN1_LB1CD</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB1CD: IN</Result>
+                  <Result>LB1CD: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB1CD: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBN1: OUT</Result>
+                  <Result>LBN1: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBN1: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN5_NC: O_CODE_G</Result>
+                  <Result>LN3_5C: O_CODE_G</Result>
+                  <Result>LN1_3C: O_CODE_G</Result>
+                  <Result>LN1CD_1C: O_CODE_Y</Result>
+                  <Result>LN5_NN: DARK_VIRT</Result>
+                  <Result>LN3_5N: DARK_VIRT</Result>
+                  <Result>LN1_3N: DARK_VIRT</Result>
+                  <Result>LN1CD_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.18" name="">
+            <Test id="32.1.1.18">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBN1</Event>
+                  <Event>cosCmdCycles 1 8 ABS LB1CD</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBN1_LB1CD_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB1CD: IN</Result>
+                  <Result>LB1CD: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB1CD: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBN1: OUT</Result>
+                  <Result>LBN1: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBN1: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN5_NC: O_CODE_G</Result>
+                  <Result>LN3_5C: O_CODE_G</Result>
+                  <Result>LN1_3C: O_CODE_G</Result>
+                  <Result>LN1CD_1C: O_CODE_Y</Result>
+                  <Result>LN5_NN: DARK_VIRT</Result>
+                  <Result>LN3_5N: DARK_VIRT</Result>
+                  <Result>LN1_3N: DARK_VIRT</Result>
+                  <Result>LN1CD_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.19" name="">
+            <Test id="32.1.1.19">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBN2</Event>
+                  <Event>cosCmdCycles 1 8 ABS LB1C</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBN2_LB1C</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB1C: IN</Result>
+                  <Result>LB1C: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB1C: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBN2: OUT</Result>
+                  <Result>LBN2: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBN2: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2_NDC: O_CODE_G</Result>
+                  <Result>LN2_4C: SIG_G</Result>
+                  <Result>LN4_6C: SIG_G</Result>
+                  <Result>LN6_1CC: O_CODE_Y</Result>
+                  <Result>LN2_NDN: DARK_VIRT</Result>
+                  <Result>LN2_4N: DARK_VIRT</Result>
+                  <Result>LN4_6N: DARK_VIRT</Result>
+                  <Result>LN6_1CN: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.20" name="">
+            <Test id="32.1.1.20">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBN2</Event>
+                  <Event>cosCmdCycles 1 8 ABS LB1C</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBN2_LB1C_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB1C: IN</Result>
+                  <Result>LB1C: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB1C: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBN2: OUT</Result>
+                  <Result>LBN2: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBN2: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2_NDC: O_CODE_G</Result>
+                  <Result>LN2_4C: SIG_G</Result>
+                  <Result>LN4_6C: SIG_G</Result>
+                  <Result>LN6_1CC: O_CODE_Y</Result>
+                  <Result>LN2_NDN: DARK_VIRT</Result>
+                  <Result>LN2_4N: DARK_VIRT</Result>
+                  <Result>LN4_6N: DARK_VIRT</Result>
+                  <Result>LN6_1CN: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.21" name="">
+            <Test id="32.1.1.21">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBNR</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBNR_LBCDR</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCDR: IN</Result>
+                  <Result>LBCDR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCDR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNR: OUT</Result>
+                  <Result>LBNR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2_NDCR: O_CODE_G</Result>
+                  <Result>LNCD_2CR: O_CODE_Y</Result>
+                  <Result>LN2_NDNR: DARK_VIRT</Result>
+                  <Result>LNCD_2NR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.22" name="">
+            <Test id="32.1.1.22">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBNR</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBNR_LBCDR_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCDR: IN</Result>
+                  <Result>LBCDR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCDR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNR: OUT</Result>
+                  <Result>LBNR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2_NDCR: O_CODE_G</Result>
+                  <Result>LNCD_2CR: O_CODE_Y</Result>
+                  <Result>LN2_NDNR: DARK_VIRT</Result>
+                  <Result>LNCD_2NR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.23" name="">
+            <Test id="32.1.1.23">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBCDT</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBNT_LBCDT</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCDT: IN</Result>
+                  <Result>LBCDT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCDT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNT: OUT</Result>
+                  <Result>LBNT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3_NCT: O_CODE_G</Result>
+                  <Result>LN1_3CT: O_CODE_G</Result>
+                  <Result>LNCD_1CT: O_CODE_Y</Result>
+                  <Result>LN3_NNT: DARK_VIRT</Result>
+                  <Result>LN1_3NT: DARK_VIRT</Result>
+                  <Result>LNCD_1NT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.24" name="">
+            <Test id="32.1.1.24">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBCDT</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBNT_LBCDT_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCDT: IN</Result>
+                  <Result>LBCDT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCDT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNT: OUT</Result>
+                  <Result>LBNT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3_NCT: O_CODE_G</Result>
+                  <Result>LN1_3CT: O_CODE_G</Result>
+                  <Result>LNCD_1CT: O_CODE_Y</Result>
+                  <Result>LN3_NNT: DARK_VIRT</Result>
+                  <Result>LN1_3NT: DARK_VIRT</Result>
+                  <Result>LNCD_1NT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.25" name="">
+            <Test id="32.1.1.25">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LB2ND</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBC2</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LB2ND_LBC2</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBC2: IN</Result>
+                  <Result>LBC2: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBC2: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB2ND: OUT</Result>
+                  <Result>LB2ND: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB2ND: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN8_2NDC: O_CODE_G</Result>
+                  <Result>LN8_10C: SIG_G</Result>
+                  <Result>LN10_12C: SIG_G</Result>
+                  <Result>LN12_CC: O_CODE_Y</Result>
+                  <Result>LN8_2NDN: DARK_VIRT</Result>
+                  <Result>LN8_10N: DARK_VIRT</Result>
+                  <Result>LN10_12N: DARK_VIRT</Result>
+                  <Result>LN12_CN: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.26" name="">
+            <Test id="32.1.1.26">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LB2ND</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBC2</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LB2ND_LBC2_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBC2: IN</Result>
+                  <Result>LBC2: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBC2: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB2ND: OUT</Result>
+                  <Result>LB2ND: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB2ND: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN8_2NDC: O_CODE_G</Result>
+                  <Result>LN8_10C: SIG_G</Result>
+                  <Result>LN10_12C: SIG_G</Result>
+                  <Result>LN12_CC: O_CODE_Y</Result>
+                  <Result>LN8_2NDN: DARK_VIRT</Result>
+                  <Result>LN8_10N: DARK_VIRT</Result>
+                  <Result>LN10_12N: DARK_VIRT</Result>
+                  <Result>LN12_CN: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.27" name="">
+            <Test id="32.1.1.27">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBNDR</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBNDR_LBCR</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCR: IN</Result>
+                  <Result>LBCR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNDR: OUT</Result>
+                  <Result>LBNDR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNDR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN1_NCR: O_CODE_G</Result>
+                  <Result>LNC_1CR: SIG_Y</Result>
+                  <Result>LN1_NNR: DARK_VIRT</Result>
+                  <Result>LNC_1NR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.28" name="">
+            <Test id="32.1.1.28">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBNDR</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBNDR_LBCR_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCR: IN</Result>
+                  <Result>LBCR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNDR: OUT</Result>
+                  <Result>LBNDR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNDR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN1_NCR: O_CODE_G</Result>
+                  <Result>LNC_1CR: SIG_Y</Result>
+                  <Result>LN1_NNR: DARK_VIRT</Result>
+                  <Result>LNC_1NR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.29" name="">
+            <Test id="32.1.1.29">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBCT</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBNDT_LBCT</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCT: IN</Result>
+                  <Result>LBCT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNDT: OUT</Result>
+                  <Result>LBNDT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNDT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_NDNT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.30" name="">
+            <Test id="32.1.1.30">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBCT</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBNDT_LBCT_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCT: IN</Result>
+                  <Result>LBCT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNDT: OUT</Result>
+                  <Result>LBNDT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNDT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_NDNT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.31" name="">
+            <Test id="32.1.1.31">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LB2N</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBC1</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LB2N_LBC1</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBC1: IN</Result>
+                  <Result>LBC1: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBC1: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB2N: OUT</Result>
+                  <Result>LB2N: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB2N: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN11_2NC: O_CODE_G</Result>
+                  <Result>LN9_11C: SIG_G</Result>
+                  <Result>LN7_9C: SIG_G</Result>
+                  <Result>LNCD_7C: O_CODE_Y</Result>
+                  <Result>LN11_2NN: DARK_VIRT</Result>
+                  <Result>LN9_11N: DARK_VIRT</Result>
+                  <Result>LN7_9N: DARK_VIRT</Result>
+                  <Result>LNCD_7N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.32" name="">
+            <Test id="32.1.1.32">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LB2N</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBC1</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LB2N_LBC1_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBC1: IN</Result>
+                  <Result>LBC1: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBC1: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB2N: OUT</Result>
+                  <Result>LB2N: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB2N: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN11_2NC: O_CODE_G</Result>
+                  <Result>LN9_11C: SIG_G</Result>
+                  <Result>LN7_9C: SIG_G</Result>
+                  <Result>LNCD_7C: O_CODE_Y</Result>
+                  <Result>LN11_2NN: DARK_VIRT</Result>
+                  <Result>LN9_11N: DARK_VIRT</Result>
+                  <Result>LN7_9N: DARK_VIRT</Result>
+                  <Result>LNCD_7N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.33" name="">
+            <Test id="32.1.1.33">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBD2A</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBD2A_LBDC2A</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBDC2A: IN</Result>
+                  <Result>LBDC2A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBDC2A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBD2A: OUT</Result>
+                  <Result>LBD2A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBD2A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2A_1N: O_CODE_G</Result>
+                  <Result>LN2A_2N: O_CODE_Y</Result>
+                  <Result>LN2A_2C: DARK_VIRT</Result>
+                  <Result>LN2A_1C: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.34" name="">
+            <Test id="32.1.1.34">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBD2A</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBD2A_LBDC2A_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBDC2A: IN</Result>
+                  <Result>LBDC2A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBDC2A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBD2A: OUT</Result>
+                  <Result>LBD2A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBD2A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2A_1N: O_CODE_G</Result>
+                  <Result>LN2A_2N: O_CODE_Y</Result>
+                  <Result>LN2A_2C: DARK_VIRT</Result>
+                  <Result>LN2A_1C: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.35" name="">
+            <Test id="32.1.1.35">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBD3A</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBD3A_LBDC3A</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBDC3A: IN</Result>
+                  <Result>LBDC3A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBDC3A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBD3A: OUT</Result>
+                  <Result>LBD3A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBD3A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3A_1C: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.36" name="">
+            <Test id="32.1.1.36">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABO LBD3A</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_SN Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_DSO Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBD3A_LBDC3A_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBDC3A: IN</Result>
+                  <Result>LBDC3A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBDC3A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBD3A: OUT</Result>
+                  <Result>LBD3A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBD3A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3A_1C: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.37" name="">
+            <Test id="32.1.1.37">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBD3A</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBDC3A_LBD3A</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBD3A: IN</Result>
+                  <Result>LBD3A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBD3A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBDC3A: OUT</Result>
+                  <Result>LBDC3A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBDC3A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3A_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.38" name="">
+            <Test id="32.1.1.38">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBD3A</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBDC3A_LBD3A_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBD3A: IN</Result>
+                  <Result>LBD3A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBD3A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBDC3A: OUT</Result>
+                  <Result>LBDC3A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBDC3A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3A_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.39" name="">
+            <Test id="32.1.1.39">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>continue</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBD2A</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBDC2A_LBD2A</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBD2A: IN</Result>
+                  <Result>LBD2A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBD2A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBDC2A: OUT</Result>
+                  <Result>LBDC2A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBDC2A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2A_1C: O_CODE_G</Result>
+                  <Result>LN2A_2C: O_CODE_Y</Result>
+                  <Result>LN2A_2N: DARK_VIRT</Result>
+                  <Result>LN2A_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.40" name="">
+            <Test id="32.1.1.40">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_DSO Occ</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_SN Free</Event>
+                  <Event>cosCmdCycles 1 8 ABS LBD2A</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 LBDC2A_LBD2A_PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBD2A: IN</Result>
+                  <Result>LBD2A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBD2A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBDC2A: OUT</Result>
+                  <Result>LBDC2A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBDC2A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2A_1C: O_CODE_G</Result>
+                  <Result>LN2A_2C: O_CODE_Y</Result>
+                  <Result>LN2A_2N: DARK_VIRT</Result>
+                  <Result>LN2A_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.41" name="">
+            <Test id="32.1.1.41">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LB1C</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB1C</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBN2</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBN2</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LB1C_LBN2</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBN2: IN</Result>
+                  <Result>LBN2: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBN2: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB1C: OUT</Result>
+                  <Result>LB1C: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB1C: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN6_1CN: O_CODE_G</Result>
+                  <Result>LN4_6N: O_CODE_G</Result>
+                  <Result>LN2_4N: O_CODE_G</Result>
+                  <Result>LN2_NDN: O_CODE_Y</Result>
+                  <Result>LN6_1CC: DARK_VIRT</Result>
+                  <Result>LN4_6C: DARK_VIRT</Result>
+                  <Result>LN2_4C: DARK_VIRT</Result>
+                  <Result>LN2_NDC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.42" name="">
+            <Test id="32.1.1.42">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LB1C</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB1C</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBN2</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBN2</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LB1C_LBN2__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBN2: IN</Result>
+                  <Result>LBN2: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBN2: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB1C: OUT</Result>
+                  <Result>LB1C: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB1C: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN6_1CN: O_CODE_G</Result>
+                  <Result>LN4_6N: O_CODE_G</Result>
+                  <Result>LN2_4N: O_CODE_G</Result>
+                  <Result>LN2_NDN: O_CODE_Y</Result>
+                  <Result>LN6_1CC: DARK_VIRT</Result>
+                  <Result>LN4_6C: DARK_VIRT</Result>
+                  <Result>LN2_4C: DARK_VIRT</Result>
+                  <Result>LN2_NDC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.43" name="">
+            <Test id="32.1.1.43">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LB1CD</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB1CD</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBN1</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBN1</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LB1CD_LBN1</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBN1: IN</Result>
+                  <Result>LBN1: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBN1: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB1CD: OUT</Result>
+                  <Result>LB1CD: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB1CD: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN1CD_1N: O_CODE_G</Result>
+                  <Result>LN1_3N: SIG_G</Result>
+                  <Result>LN3_5N: SIG_G</Result>
+                  <Result>LN5_NN: SIG_Y</Result>
+                  <Result>LN1CD_1C: DARK_VIRT</Result>
+                  <Result>LN1_3C: DARK_VIRT</Result>
+                  <Result>LN3_5C: DARK_VIRT</Result>
+                  <Result>LN5_NC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.44" name="">
+            <Test id="32.1.1.44">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LB1CD</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB1CD</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBN1</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBN1</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LB1CD_LBN1__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBN1: IN</Result>
+                  <Result>LBN1: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBN1: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB1CD: OUT</Result>
+                  <Result>LB1CD: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB1CD: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN1CD_1N: O_CODE_G</Result>
+                  <Result>LN1_3N: SIG_G</Result>
+                  <Result>LN3_5N: SIG_G</Result>
+                  <Result>LN5_NN: SIG_Y</Result>
+                  <Result>LN1CD_1C: DARK_VIRT</Result>
+                  <Result>LN1_3C: DARK_VIRT</Result>
+                  <Result>LN3_5C: DARK_VIRT</Result>
+                  <Result>LN5_NC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.45" name="">
+            <Test id="32.1.1.45">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBC1</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBC1</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LB2N</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB2N</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBC1_LB2N</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB2N: IN</Result>
+                  <Result>LB2N: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB2N: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBC1: OUT</Result>
+                  <Result>LBC1: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBC1: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_7N: O_CODE_G</Result>
+                  <Result>LN7_9N: SIG_G</Result>
+                  <Result>LN9_11N: SIG_G</Result>
+                  <Result>LN11_2NN: O_CODE_Y</Result>
+                  <Result>LNCD_7C: DARK_VIRT</Result>
+                  <Result>LN7_9C: DARK_VIRT</Result>
+                  <Result>LN9_11C: DARK_VIRT</Result>
+                  <Result>LN11_2NC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.46" name="">
+            <Test id="32.1.1.46">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBC1</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBC1</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LB2N</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB2N</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBC1_LB2N__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB2N: IN</Result>
+                  <Result>LB2N: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB2N: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBC1: OUT</Result>
+                  <Result>LBC1: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBC1: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_7N: O_CODE_G</Result>
+                  <Result>LN7_9N: SIG_G</Result>
+                  <Result>LN9_11N: SIG_G</Result>
+                  <Result>LN11_2NN: O_CODE_Y</Result>
+                  <Result>LNCD_7C: DARK_VIRT</Result>
+                  <Result>LN7_9C: DARK_VIRT</Result>
+                  <Result>LN9_11C: DARK_VIRT</Result>
+                  <Result>LN11_2NC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.47" name="">
+            <Test id="32.1.1.47">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBC2</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBC2</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LB2ND</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB2ND</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBC2_LB2ND</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB2ND: IN</Result>
+                  <Result>LB2ND: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB2ND: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBC2: OUT</Result>
+                  <Result>LBC2: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBC2: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN12_CN: O_CODE_G</Result>
+                  <Result>LN10_12N: SIG_G</Result>
+                  <Result>LN8_10N: SIG_G</Result>
+                  <Result>LN8_2NDN: O_CODE_Y</Result>
+                  <Result>LN12_CC: DARK_VIRT</Result>
+                  <Result>LN10_12C: DARK_VIRT</Result>
+                  <Result>LN8_10C: DARK_VIRT</Result>
+                  <Result>LN8_2NDC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.48" name="">
+            <Test id="32.1.1.48">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBC2</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBC2</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LB2ND</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB2ND</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBC2_LB2ND__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB2ND: IN</Result>
+                  <Result>LB2ND: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB2ND: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBC2: OUT</Result>
+                  <Result>LBC2: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBC2: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN12_CN: O_CODE_G</Result>
+                  <Result>LN10_12N: SIG_G</Result>
+                  <Result>LN8_10N: SIG_G</Result>
+                  <Result>LN8_2NDN: O_CODE_Y</Result>
+                  <Result>LN12_CC: DARK_VIRT</Result>
+                  <Result>LN10_12C: DARK_VIRT</Result>
+                  <Result>LN8_10C: DARK_VIRT</Result>
+                  <Result>LN8_2NDC: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.49" name="">
+            <Test id="32.1.1.49">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBNDR</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBNDR</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBCR_LBNDR</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNDR: IN</Result>
+                  <Result>LBNDR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNDR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCR: OUT</Result>
+                  <Result>LBCR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_1NR: O_CODE_G</Result>
+                  <Result>LN1_NNR: O_CODE_Y</Result>
+                  <Result>LNC_1CR: DARK_VIRT</Result>
+                  <Result>LN1_NCR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.50" name="">
+            <Test id="32.1.1.50">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBNDR</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBNDR</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBCR_LBNDR__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNDR: IN</Result>
+                  <Result>LBNDR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNDR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCR: OUT</Result>
+                  <Result>LBCR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_1NR: O_CODE_G</Result>
+                  <Result>LN1_NNR: O_CODE_Y</Result>
+                  <Result>LNC_1CR: DARK_VIRT</Result>
+                  <Result>LN1_NCR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.51" name="">
+            <Test id="32.1.1.51">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBCDT</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBCDT</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBCDT_LBNT</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNT: IN</Result>
+                  <Result>LBNT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCDT: OUT</Result>
+                  <Result>LBCDT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCDT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_1NT: O_CODE_G</Result>
+                  <Result>LN1_3NT: SIG_G</Result>
+                  <Result>LN3_NNT: SIG_Y</Result>
+                  <Result>LNCD_1CT: DARK_VIRT</Result>
+                  <Result>LN1_3CT: DARK_VIRT</Result>
+                  <Result>LN3_NCT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.52" name="">
+            <Test id="32.1.1.52">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBCDT</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBCDT</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBCDT_LBNT__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNT: IN</Result>
+                  <Result>LBNT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCDT: OUT</Result>
+                  <Result>LBCDT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCDT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_1NT: O_CODE_G</Result>
+                  <Result>LN1_3NT: SIG_G</Result>
+                  <Result>LN3_NNT: SIG_Y</Result>
+                  <Result>LNCD_1CT: DARK_VIRT</Result>
+                  <Result>LN1_3CT: DARK_VIRT</Result>
+                  <Result>LN3_NCT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.53" name="">
+            <Test id="32.1.1.53">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBNR</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBNR</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBCDR_LBNR</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNR: IN</Result>
+                  <Result>LBNR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCDR: OUT</Result>
+                  <Result>LBCDR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCDR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_2NR: O_CODE_G</Result>
+                  <Result>LN2_NDNR: SIG_Y</Result>
+                  <Result>LNCD_2CR: DARK_VIRT</Result>
+                  <Result>LN2_NDCR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.54" name="">
+            <Test id="32.1.1.54">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBNR</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBNR</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBCDR_LBNR__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNR: IN</Result>
+                  <Result>LBNR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCDR: OUT</Result>
+                  <Result>LBCDR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCDR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNCD_2NR: O_CODE_G</Result>
+                  <Result>LN2_NDNR: SIG_Y</Result>
+                  <Result>LNCD_2CR: DARK_VIRT</Result>
+                  <Result>LN2_NDCR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.55" name="">
+            <Test id="32.1.1.55">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBCT</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBCT</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBCT_LBNDT</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNDT: IN</Result>
+                  <Result>LBNDT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNDT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCT: OUT</Result>
+                  <Result>LBCT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_NDCT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.56" name="">
+            <Test id="32.1.1.56">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBCT</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBCT</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBCT_LBNDT__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBNDT: IN</Result>
+                  <Result>LBNDT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBNDT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBCT: OUT</Result>
+                  <Result>LBCT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBCT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_NDCT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.57" name="">
+            <Test id="32.1.1.57">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBN1</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBN1</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LB1CD</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB1CD</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBN1_LB1CD</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB1CD: IN</Result>
+                  <Result>LB1CD: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB1CD: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBN1: OUT</Result>
+                  <Result>LBN1: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBN1: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN5_NC: O_CODE_G</Result>
+                  <Result>LN3_5C: O_CODE_G</Result>
+                  <Result>LN1_3C: O_CODE_G</Result>
+                  <Result>LN1CD_1C: O_CODE_Y</Result>
+                  <Result>LN5_NN: DARK_VIRT</Result>
+                  <Result>LN3_5N: DARK_VIRT</Result>
+                  <Result>LN1_3N: DARK_VIRT</Result>
+                  <Result>LN1CD_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.58" name="">
+            <Test id="32.1.1.58">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBN1</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBN1</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LB1CD</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB1CD</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBN1_LB1CD__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB1CD: IN</Result>
+                  <Result>LB1CD: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB1CD: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBN1: OUT</Result>
+                  <Result>LBN1: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBN1: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN5_NC: O_CODE_G</Result>
+                  <Result>LN3_5C: O_CODE_G</Result>
+                  <Result>LN1_3C: O_CODE_G</Result>
+                  <Result>LN1CD_1C: O_CODE_Y</Result>
+                  <Result>LN5_NN: DARK_VIRT</Result>
+                  <Result>LN3_5N: DARK_VIRT</Result>
+                  <Result>LN1_3N: DARK_VIRT</Result>
+                  <Result>LN1CD_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.59" name="">
+            <Test id="32.1.1.59">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBN2</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBN2</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LB1C</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB1C</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBN2_LB1C</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB1C: IN</Result>
+                  <Result>LB1C: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB1C: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBN2: OUT</Result>
+                  <Result>LBN2: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBN2: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2_NDC: O_CODE_G</Result>
+                  <Result>LN2_4C: SIG_G</Result>
+                  <Result>LN4_6C: SIG_G</Result>
+                  <Result>LN6_1CC: O_CODE_Y</Result>
+                  <Result>LN2_NDN: DARK_VIRT</Result>
+                  <Result>LN2_4N: DARK_VIRT</Result>
+                  <Result>LN4_6N: DARK_VIRT</Result>
+                  <Result>LN6_1CN: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.60" name="">
+            <Test id="32.1.1.60">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBN2</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBN2</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LB1C</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB1C</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBN2_LB1C__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LB1C: IN</Result>
+                  <Result>LB1C: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LB1C: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBN2: OUT</Result>
+                  <Result>LBN2: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBN2: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2_NDC: O_CODE_G</Result>
+                  <Result>LN2_4C: SIG_G</Result>
+                  <Result>LN4_6C: SIG_G</Result>
+                  <Result>LN6_1CC: O_CODE_Y</Result>
+                  <Result>LN2_NDN: DARK_VIRT</Result>
+                  <Result>LN2_4N: DARK_VIRT</Result>
+                  <Result>LN4_6N: DARK_VIRT</Result>
+                  <Result>LN6_1CN: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.61" name="">
+            <Test id="32.1.1.61">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBNR</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBNR</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBNR_LBCDR</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCDR: IN</Result>
+                  <Result>LBCDR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCDR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNR: OUT</Result>
+                  <Result>LBNR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2_NDCR: O_CODE_G</Result>
+                  <Result>LNCD_2CR: O_CODE_Y</Result>
+                  <Result>LN2_NDNR: DARK_VIRT</Result>
+                  <Result>LNCD_2NR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.62" name="">
+            <Test id="32.1.1.62">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBNR</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBNR</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCDR_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBNR_LBCDR__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCDR: IN</Result>
+                  <Result>LBCDR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCDR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNR: OUT</Result>
+                  <Result>LBNR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2_NDCR: O_CODE_G</Result>
+                  <Result>LNCD_2CR: O_CODE_Y</Result>
+                  <Result>LN2_NDNR: DARK_VIRT</Result>
+                  <Result>LNCD_2NR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.63" name="">
+            <Test id="32.1.1.63">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBCDT</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBCDT</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBNT_LBCDT</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCDT: IN</Result>
+                  <Result>LBCDT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCDT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNT: OUT</Result>
+                  <Result>LBNT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3_NCT: O_CODE_G</Result>
+                  <Result>LN1_3CT: O_CODE_G</Result>
+                  <Result>LNCD_1CT: O_CODE_Y</Result>
+                  <Result>LN3_NNT: DARK_VIRT</Result>
+                  <Result>LN1_3NT: DARK_VIRT</Result>
+                  <Result>LNCD_1NT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.64" name="">
+            <Test id="32.1.1.64">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNT_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBCDT</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBCDT</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBNT_LBCDT__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCDT: IN</Result>
+                  <Result>LBCDT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCDT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNT: OUT</Result>
+                  <Result>LBNT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3_NCT: O_CODE_G</Result>
+                  <Result>LN1_3CT: O_CODE_G</Result>
+                  <Result>LNCD_1CT: O_CODE_Y</Result>
+                  <Result>LN3_NNT: DARK_VIRT</Result>
+                  <Result>LN1_3NT: DARK_VIRT</Result>
+                  <Result>LNCD_1NT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.65" name="">
+            <Test id="32.1.1.65">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LB2ND</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB2ND</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBC2</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBC2</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LB2ND_LBC2</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBC2: IN</Result>
+                  <Result>LBC2: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBC2: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB2ND: OUT</Result>
+                  <Result>LB2ND: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB2ND: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN8_2NDC: O_CODE_G</Result>
+                  <Result>LN8_10C: SIG_G</Result>
+                  <Result>LN10_12C: SIG_G</Result>
+                  <Result>LN12_CC: O_CODE_Y</Result>
+                  <Result>LN8_2NDN: DARK_VIRT</Result>
+                  <Result>LN8_10N: DARK_VIRT</Result>
+                  <Result>LN10_12N: DARK_VIRT</Result>
+                  <Result>LN12_CN: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.66" name="">
+            <Test id="32.1.1.66">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LB2ND</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB2ND</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBC2</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBC2</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LB2ND_LBC2__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBC2: IN</Result>
+                  <Result>LBC2: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBC2: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB2ND: OUT</Result>
+                  <Result>LB2ND: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB2ND: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN8_2NDC: O_CODE_G</Result>
+                  <Result>LN8_10C: SIG_G</Result>
+                  <Result>LN10_12C: SIG_G</Result>
+                  <Result>LN12_CC: O_CODE_Y</Result>
+                  <Result>LN8_2NDN: DARK_VIRT</Result>
+                  <Result>LN8_10N: DARK_VIRT</Result>
+                  <Result>LN10_12N: DARK_VIRT</Result>
+                  <Result>LN12_CN: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.67" name="">
+            <Test id="32.1.1.67">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBNDR</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBNDR</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBNDR_LBCR</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCR: IN</Result>
+                  <Result>LBCR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNDR: OUT</Result>
+                  <Result>LBNDR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNDR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN1_NCR: O_CODE_G</Result>
+                  <Result>LNC_1CR: SIG_Y</Result>
+                  <Result>LN1_NNR: DARK_VIRT</Result>
+                  <Result>LNC_1NR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.68" name="">
+            <Test id="32.1.1.68">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBNDR</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBNDR</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBCR_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBNDR_LBCR__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCR: IN</Result>
+                  <Result>LBCR: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCR: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNDR: OUT</Result>
+                  <Result>LBNDR: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNDR: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN1_NCR: O_CODE_G</Result>
+                  <Result>LNC_1CR: SIG_Y</Result>
+                  <Result>LN1_NNR: DARK_VIRT</Result>
+                  <Result>LNC_1NR: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.69" name="">
+            <Test id="32.1.1.69">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBCT</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBCT</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBNDT_LBCT</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCT: IN</Result>
+                  <Result>LBCT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNDT: OUT</Result>
+                  <Result>LBNDT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNDT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_NDNT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.70" name="">
+            <Test id="32.1.1.70">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBNDT_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBCT</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBCT</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBNDT_LBCT__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBCT: IN</Result>
+                  <Result>LBCT: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBCT: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBNDT: OUT</Result>
+                  <Result>LBNDT: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBNDT: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LNC_NDNT: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.71" name="">
+            <Test id="32.1.1.71">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LB2N</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB2N</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBC1</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBC1</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LB2N_LBC1</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBC1: IN</Result>
+                  <Result>LBC1: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBC1: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB2N: OUT</Result>
+                  <Result>LB2N: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB2N: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN11_2NC: O_CODE_G</Result>
+                  <Result>LN9_11C: SIG_G</Result>
+                  <Result>LN7_9C: SIG_G</Result>
+                  <Result>LNCD_7C: O_CODE_Y</Result>
+                  <Result>LN11_2NN: DARK_VIRT</Result>
+                  <Result>LN9_11N: DARK_VIRT</Result>
+                  <Result>LN7_9N: DARK_VIRT</Result>
+                  <Result>LNCD_7N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.72" name="">
+            <Test id="32.1.1.72">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LB2N</Event>
+                  <Event>cosCmdSeconds 1 3 POK LB2N</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBC1</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBC1</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LB2N_LBC1__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBC1: IN</Result>
+                  <Result>LBC1: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBC1: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LB2N: OUT</Result>
+                  <Result>LB2N: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LB2N: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN11_2NC: O_CODE_G</Result>
+                  <Result>LN9_11C: SIG_G</Result>
+                  <Result>LN7_9C: SIG_G</Result>
+                  <Result>LNCD_7C: O_CODE_Y</Result>
+                  <Result>LN11_2NN: DARK_VIRT</Result>
+                  <Result>LN9_11N: DARK_VIRT</Result>
+                  <Result>LN7_9N: DARK_VIRT</Result>
+                  <Result>LNCD_7N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.73" name="">
+            <Test id="32.1.1.73">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBD2A</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBD2A</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBD2A_LBDC2A</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBDC2A: IN</Result>
+                  <Result>LBDC2A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBDC2A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBD2A: OUT</Result>
+                  <Result>LBD2A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBD2A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2A_1N: O_CODE_G</Result>
+                  <Result>LN2A_2N: O_CODE_Y</Result>
+                  <Result>LN2A_2C: DARK_VIRT</Result>
+                  <Result>LN2A_1C: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.74" name="">
+            <Test id="32.1.1.74">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBD2A</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBD2A</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBD2A_LBDC2A__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBDC2A: IN</Result>
+                  <Result>LBDC2A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBDC2A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBD2A: OUT</Result>
+                  <Result>LBD2A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBD2A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2A_1N: O_CODE_G</Result>
+                  <Result>LN2A_2N: O_CODE_Y</Result>
+                  <Result>LN2A_2C: DARK_VIRT</Result>
+                  <Result>LN2A_1C: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.75" name="">
+            <Test id="32.1.1.75">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBD3A</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBD3A</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBD3A_LBDC3A</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBDC3A: IN</Result>
+                  <Result>LBDC3A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBDC3A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBD3A: OUT</Result>
+                  <Result>LBD3A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBD3A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3A_1C: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.76" name="">
+            <Test id="32.1.1.76">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdCycles 1 8 ABVO LBD3A</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBD3A</Event>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_PV Free</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBD3A_LBDC3A__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBDC3A: IN</Result>
+                  <Result>LBDC3A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBDC3A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBD3A: OUT</Result>
+                  <Result>LBD3A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBD3A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3A_1C: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.77" name="">
+            <Test id="32.1.1.77">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBD3A</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBD3A</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBDC3A_LBD3A</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBD3A: IN</Result>
+                  <Result>LBD3A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBD3A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBDC3A: OUT</Result>
+                  <Result>LBDC3A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBDC3A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3A_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.78" name="">
+            <Test id="32.1.1.78">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC3A_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBD3A</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBD3A</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBDC3A_LBD3A__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBD3A: IN</Result>
+                  <Result>LBD3A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBD3A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBDC3A: OUT</Result>
+                  <Result>LBDC3A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBDC3A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN3A_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.79" name="">
+            <Test id="32.1.1.79">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBD2A</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBD2A</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBDC2A_LBD2A</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBD2A: IN</Result>
+                  <Result>LBD2A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBD2A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBDC2A: OUT</Result>
+                  <Result>LBDC2A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBDC2A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2A_1C: O_CODE_G</Result>
+                  <Result>LN2A_2C: O_CODE_Y</Result>
+                  <Result>LN2A_2N: DARK_VIRT</Result>
+                  <Result>LN2A_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="32.1.1.80" name="">
+            <Test id="32.1.1.80">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>yardSetStatusTryCycles 1 8 KC_LBDC2A_OV Free</Event>
+                  <Event>cosCmdCycles 1 8 ABVP LBD2A</Event>
+                  <Event>cosCmdSeconds 1 3 POK LBD2A</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointSave 1 VSP_LBDC2A_LBD2A__PLUS</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>LBD2A: IN</Result>
+                  <Result>LBD2A: YELLOW_ARROW_LIT_IND</Result>
+                  <Result>LBD2A: GREEN_ARROW_OFF_IND</Result>
+                  <Result>LBDC2A: OUT</Result>
+                  <Result>LBDC2A: GREEN_ARROW_LIT_IND</Result>
+                  <Result>LBDC2A: YELLOW_ARROW_OFF_IND</Result>
+                  <Result>LN2A_1C: O_CODE_G</Result>
+                  <Result>LN2A_2C: O_CODE_Y</Result>
+                  <Result>LN2A_2N: DARK_VIRT</Result>
+                  <Result>LN2A_1N: DARK_VIRT</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+      </TestSuite>
+   </Function>
+</Functions>

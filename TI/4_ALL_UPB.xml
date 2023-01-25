@@ -1,0 +1,2526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Functions>
+   <Function name="UPB_commands">
+      <TestSuite name="UPB in Command Table">
+         <TestCase id="1.4.1.1" name="">
+            <Test id="1.4.1.1">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsInitCurrent 1</Event>
+                  <Event>ilsLoadCurrent 1</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SI1C PT2A PT4A SI1C1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1C PT2A PT4A SI1C1</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1C: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.2" name="">
+            <Test id="1.4.1.2">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SI1C PT2A PT4A SI1C1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1C PT2A PT4A SI1C1</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1C: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.3" name="">
+            <Test id="1.4.1.3">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SI1C PT2A PT4A SINT3A</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1C PT2A PT4A SINT3A</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1C: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.4" name="">
+            <Test id="1.4.1.4">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SI1C PT2A PT4A SINT3A</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1C PT2A PT4A SINT3A</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1C: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.5" name="">
+            <Test id="1.4.1.5">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SI1C1 PT2A PT4A SI1ND</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1C1 PT2A PT4A SI1ND</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1C1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.6" name="">
+            <Test id="1.4.1.6">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SI1C1 PT2A PT4A SI1ND</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1C1 PT2A PT4A SI1ND</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1C1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.7" name="">
+            <Test id="1.4.1.7">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SI1CD PT7A PT5A PT13A PT9A PT11A SICM20</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1CD PT7A PT5A PT13A PT9A PT11A SICM20</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1CD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.8" name="">
+            <Test id="1.4.1.8">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SI1CD PT7A PT5A PT13A PT9A PT11A SICM20</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1CD PT7A PT5A PT13A PT9A PT11A SICM20</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1CD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.9" name="">
+            <Test id="1.4.1.9">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SI1CD PT7A PT5A PT13A PT9A PT11A SICM21</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1CD PT7A PT5A PT13A PT9A PT11A SICM21</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1CD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.10" name="">
+            <Test id="1.4.1.10">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SI1CD PT7A PT5A PT13A PT9A PT11A SICM21</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1CD PT7A PT5A PT13A PT9A PT11A SICM21</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1CD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.11" name="">
+            <Test id="1.4.1.11">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SI1CD PT7A PT5A PT13A PT9A SICM19</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1CD PT7A PT5A PT13A PT9A SICM19</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1CD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.12" name="">
+            <Test id="1.4.1.12">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SI1CD PT7A PT5A PT13A PT9A SICM19</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1CD PT7A PT5A PT13A PT9A SICM19</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1CD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.13" name="">
+            <Test id="1.4.1.13">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB1C_LBN2</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SI1N1 PT2A PT4A SI1C</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1N1 PT2A PT4A SI1C</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1N1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.14" name="">
+            <Test id="1.4.1.14">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB1C_LBN2_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SI1N1 PT2A PT4A SI1C</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1N1 PT2A PT4A SI1C</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1N1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.15" name="">
+            <Test id="1.4.1.15">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SI1ND PT2A PT4A SI1N1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1ND PT2A PT4A SI1N1</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1ND: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.16" name="">
+            <Test id="1.4.1.16">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SI1ND PT2A PT4A SI1N1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SI1ND PT2A PT4A SI1N1</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SI1ND: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.17" name="">
+            <Test id="1.4.1.17">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIC PT4 PT2 SICM2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC PT4 PT2 SICM2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.18" name="">
+            <Test id="1.4.1.18">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIC PT4 PT2 SICM2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC PT4 PT2 SICM2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.19" name="">
+            <Test id="1.4.1.19">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBN1_LB1CD</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIC1 PT1 PT3 SIN</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC1 PT1 PT3 SIN</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.20" name="">
+            <Test id="1.4.1.20">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBN1_LB1CD_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIC1 PT1 PT3 SIN</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC1 PT1 PT3 SIN</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.21" name="">
+            <Test id="1.4.1.21">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBN1_LB1CD</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIC2 PT1 PT3 PT5 PT7 SIN</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC2 PT1 PT3 PT5 PT7 SIN</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.22" name="">
+            <Test id="1.4.1.22">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBN1_LB1CD_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIC2 PT1 PT3 PT5 PT7 SIN</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC2 PT1 PT3 PT5 PT7 SIN</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.23" name="">
+            <Test id="1.4.1.23">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBN2_LB1C</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIC2 PT1 PT3 PT5 PT7 SIND</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC2 PT1 PT3 PT5 PT7 SIND</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.24" name="">
+            <Test id="1.4.1.24">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBN2_LB1C_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIC2 PT1 PT3 PT5 PT7 SIND</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC2 PT1 PT3 PT5 PT7 SIND</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.25" name="">
+            <Test id="1.4.1.25">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB2ND_LBC2</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIC2_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIND_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC2_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIND_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC2_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.26" name="">
+            <Test id="1.4.1.26">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB2ND_LBC2_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIC2_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIND_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC2_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIND_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC2_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.27" name="">
+            <Test id="1.4.1.27">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBN1_LB1CD</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIC4 PT1 PT3 PT5 PT7 PT23 PT25 SIN</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC4 PT1 PT3 PT5 PT7 PT23 PT25 SIN</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC4: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.28" name="">
+            <Test id="1.4.1.28">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBN1_LB1CD_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIC4 PT1 PT3 PT5 PT7 PT23 PT25 SIN</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC4 PT1 PT3 PT5 PT7 PT23 PT25 SIN</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC4: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.29" name="">
+            <Test id="1.4.1.29">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBN2_LB1C</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIC4 PT1 PT3 PT5 PT7 PT23 PT25 SIND</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC4 PT1 PT3 PT5 PT7 PT23 PT25 SIND</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC4: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.30" name="">
+            <Test id="1.4.1.30">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBN2_LB1C_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIC4 PT1 PT3 PT5 PT7 PT23 PT25 SIND</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC4 PT1 PT3 PT5 PT7 PT23 PT25 SIND</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC4: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.31" name="">
+            <Test id="1.4.1.31">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB2ND_LBC2</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIC4_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B PT25_B SIND_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC4_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B PT25_B SIND_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC4_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.32" name="">
+            <Test id="1.4.1.32">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB2ND_LBC2_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIC4_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B PT25_B SIND_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC4_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B PT25_B SIND_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC4_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.33" name="">
+            <Test id="1.4.1.33">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICD PT4 PT2 PT6 PT8 PT10 PT12 SICM3</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD PT4 PT2 PT6 PT8 PT10 PT12 SICM3</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.34" name="">
+            <Test id="1.4.1.34">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICD PT4 PT2 PT6 PT8 PT10 PT12 SICM3</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD PT4 PT2 PT6 PT8 PT10 PT12 SICM3</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.35" name="">
+            <Test id="1.4.1.35">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICD PT4 PT2 PT6 PT8 SICM1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD PT4 PT2 PT6 PT8 SICM1</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.36" name="">
+            <Test id="1.4.1.36">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICD PT4 PT2 PT6 PT8 SICM1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD PT4 PT2 PT6 PT8 SICM1</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.37" name="">
+            <Test id="1.4.1.37">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICD PT4 PT2 PT6 PT8 SICM2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD PT4 PT2 PT6 PT8 SICM2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.38" name="">
+            <Test id="1.4.1.38">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICD PT4 PT2 PT6 PT8 SICM2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD PT4 PT2 PT6 PT8 SICM2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.39" name="">
+            <Test id="1.4.1.39">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT20_B PT22_B SIC2_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT20_B PT22_B SIC2_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.40" name="">
+            <Test id="1.4.1.40">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT20_B PT22_B SIC2_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT20_B PT22_B SIC2_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.41" name="">
+            <Test id="1.4.1.41">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B PT29_B PT31_B SIC3_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B PT29_B PT31_B SIC3_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.42" name="">
+            <Test id="1.4.1.42">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B PT29_B PT31_B SIC3_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B PT29_B PT31_B SIC3_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.43" name="">
+            <Test id="1.4.1.43">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B SIC1_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B SIC1_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.44" name="">
+            <Test id="1.4.1.44">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B SIC1_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICD_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B SIC1_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICD_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.45" name="">
+            <Test id="1.4.1.45">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM1 PT11 PT9 PT15 PT13 PT19 PT17 PT21 SIC4</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM1 PT11 PT9 PT15 PT13 PT19 PT17 PT21 SIC4</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.46" name="">
+            <Test id="1.4.1.46">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM1 PT11 PT9 PT15 PT13 PT19 PT17 PT21 SIC4</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM1 PT11 PT9 PT15 PT13 PT19 PT17 PT21 SIC4</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.47" name="">
+            <Test id="1.4.1.47">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM1 PT15 PT13 PT19 PT17 PT21 SIC2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM1 PT15 PT13 PT19 PT17 PT21 SIC2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.48" name="">
+            <Test id="1.4.1.48">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM1 PT15 PT13 PT19 PT17 PT21 SIC2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM1 PT15 PT13 PT19 PT17 PT21 SIC2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.49" name="">
+            <Test id="1.4.1.49">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM1 PT19 PT17 PT21 SIC1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM1 PT19 PT17 PT21 SIC1</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.50" name="">
+            <Test id="1.4.1.50">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM1 PT19 PT17 PT21 SIC1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM1 PT19 PT17 PT21 SIC1</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.51" name="">
+            <Test id="1.4.1.51">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBNDR_LBCR</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM19 PT10A PT12A PT6A PT8A SINDR</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM19 PT10A PT12A PT6A PT8A SINDR</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM19: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.52" name="">
+            <Test id="1.4.1.52">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBNDR_LBCR_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM19 PT10A PT12A PT6A PT8A SINDR</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM19 PT10A PT12A PT6A PT8A SINDR</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM19: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.53" name="">
+            <Test id="1.4.1.53">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM19 PT6A PT8A PT10A PT12A SI1N2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM19 PT6A PT8A PT10A PT12A SI1N2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM19: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.54" name="">
+            <Test id="1.4.1.54">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM19 PT6A PT8A PT10A PT12A SI1N2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM19 PT6A PT8A PT10A PT12A SI1N2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM19: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.55" name="">
+            <Test id="1.4.1.55">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM2 PT15 PT13 PT19 PT17 SIC2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM2 PT15 PT13 PT19 PT17 SIC2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.56" name="">
+            <Test id="1.4.1.56">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM2 PT15 PT13 PT19 PT17 SIC2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM2 PT15 PT13 PT19 PT17 SIC2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.57" name="">
+            <Test id="1.4.1.57">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM2 PT9 PT11 PT15 PT13 PT19 PT17 SIC4</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM2 PT9 PT11 PT15 PT13 PT19 PT17 SIC4</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.58" name="">
+            <Test id="1.4.1.58">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM2 PT9 PT11 PT15 PT13 PT19 PT17 SIC4</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM2 PT9 PT11 PT15 PT13 PT19 PT17 SIC4</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.59" name="">
+            <Test id="1.4.1.59">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBNDR_LBCR</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM20 PT10A PT12A PT6A PT8A SINDR</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM20 PT10A PT12A PT6A PT8A SINDR</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM20: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.60" name="">
+            <Test id="1.4.1.60">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBNDR_LBCR_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM20 PT10A PT12A PT6A PT8A SINDR</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM20 PT10A PT12A PT6A PT8A SINDR</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM20: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.61" name="">
+            <Test id="1.4.1.61">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM20 PT6A PT8A PT10A PT12A SI1N2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM20 PT6A PT8A PT10A PT12A SI1N2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM20: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.62" name="">
+            <Test id="1.4.1.62">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM20 PT6A PT8A PT10A PT12A SI1N2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM20 PT6A PT8A PT10A PT12A SI1N2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM20: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.63" name="">
+            <Test id="1.4.1.63">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBNDR_LBCR</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM21 PT10A PT16A PT14A PT8A SINDR</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM21 PT10A PT16A PT14A PT8A SINDR</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM21: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.64" name="">
+            <Test id="1.4.1.64">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBNDR_LBCR_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM21 PT10A PT16A PT14A PT8A SINDR</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM21 PT10A PT16A PT14A PT8A SINDR</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM21: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.65" name="">
+            <Test id="1.4.1.65">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM21 PT6A PT8A PT10A PT14A PT16A SI1N2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM21 PT6A PT8A PT10A PT14A PT16A SI1N2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM21: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.66" name="">
+            <Test id="1.4.1.66">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM21 PT6A PT8A PT10A PT14A PT16A SI1N2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM21 PT6A PT8A PT10A PT14A PT16A SI1N2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM21: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.67" name="">
+            <Test id="1.4.1.67">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM3 PT11 PT9 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIC4</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM3 PT11 PT9 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIC4</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM3: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.68" name="">
+            <Test id="1.4.1.68">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM3 PT11 PT9 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIC4</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM3 PT11 PT9 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIC4</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM3: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.69" name="">
+            <Test id="1.4.1.69">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM3 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIC2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM3 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIC2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM3: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.70" name="">
+            <Test id="1.4.1.70">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM3 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIC2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM3 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIC2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM3: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.71" name="">
+            <Test id="1.4.1.71">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SICM3 PT19 PT17 PT21 PT12 PT10 SIC1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM3 PT19 PT17 PT21 PT12 PT10 SIC1</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM3: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.72" name="">
+            <Test id="1.4.1.72">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SICM3 PT19 PT17 PT21 PT12 PT10 SIC1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SICM3 PT19 PT17 PT21 PT12 PT10 SIC1</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SICM3: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.73" name="">
+            <Test id="1.4.1.73">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIC_B PT2_B PT4_B PT12_B PT14_B PT16_B PT18_B PT20_B PT22_B PT28_B PT30_B SIC2_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC_B PT2_B PT4_B PT12_B PT14_B PT16_B PT18_B PT20_B PT22_B PT28_B PT30_B SIC2_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.74" name="">
+            <Test id="1.4.1.74">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIC_B PT2_B PT4_B PT12_B PT14_B PT16_B PT18_B PT20_B PT22_B PT28_B PT30_B SIC2_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC_B PT2_B PT4_B PT12_B PT14_B PT16_B PT18_B PT20_B PT22_B PT28_B PT30_B SIC2_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.75" name="">
+            <Test id="1.4.1.75">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIC_B PT2_B PT4_B PT12_B PT14_B PT20_B PT22_B PT34_B SIC4_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC_B PT2_B PT4_B PT12_B PT14_B PT20_B PT22_B PT34_B SIC4_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.76" name="">
+            <Test id="1.4.1.76">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIC_B PT2_B PT4_B PT12_B PT14_B PT20_B PT22_B PT34_B SIC4_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIC_B PT2_B PT4_B PT12_B PT14_B PT20_B PT22_B PT34_B SIC4_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIC_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.77" name="">
+            <Test id="1.4.1.77">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN PT1 PT3 PT5 PT7 PT23 PT25 SINM4</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN PT1 PT3 PT5 PT7 PT23 PT25 SINM4</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.78" name="">
+            <Test id="1.4.1.78">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIN PT1 PT3 PT5 PT7 PT23 PT25 SINM4</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN PT1 PT3 PT5 PT7 PT23 PT25 SINM4</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.79" name="">
+            <Test id="1.4.1.79">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN PT1 PT3 PT5 PT7 SINM2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN PT1 PT3 PT5 PT7 SINM2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.80" name="">
+            <Test id="1.4.1.80">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIN PT1 PT3 PT5 PT7 SINM2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN PT1 PT3 PT5 PT7 SINM2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.81" name="">
+            <Test id="1.4.1.81">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN PT1 PT3 SINM1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN PT1 PT3 SINM1</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.82" name="">
+            <Test id="1.4.1.82">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIN PT1 PT3 SINM1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN PT1 PT3 SINM1</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.83" name="">
+            <Test id="1.4.1.83">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBC1_LB2N</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN1 PT4 PT2 PT6 PT8 SICD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN1 PT4 PT2 PT6 PT8 SICD</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.84" name="">
+            <Test id="1.4.1.84">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBC1_LB2N_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIN1 PT4 PT2 PT6 PT8 SICD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN1 PT4 PT2 PT6 PT8 SICD</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.85" name="">
+            <Test id="1.4.1.85">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_PO_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN1_B PT2_B PT4_B PT12_B PT14_B PT16_B PT18_B PT20_B PT22_B PT28_B PT30_B PT40_B SICD_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN1_B PT2_B PT4_B PT12_B PT14_B PT16_B PT18_B PT20_B PT22_B PT28_B PT30_B PT40_B SICD_B</Event>
+                  <Event>execGoSeconds 1 7</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN1_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.86" name="">
+            <Test id="1.4.1.86">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_PO_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN1_B PT2_B PT4_B PT12_B PT14_B PT16_B PT18_B PT20_B PT22_B PT28_B PT30_B PT40_B SICD_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN1_B PT2_B PT4_B PT12_B PT14_B PT16_B PT18_B PT20_B PT22_B PT28_B PT30_B PT40_B SICD_B</Event>
+                  <Event>execGoSeconds 1 7</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN1_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.87" name="">
+            <Test id="1.4.1.87">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_PO_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN1_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B SICD_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN1_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B SICD_B</Event>
+                  <Event>execGoSeconds 1 7</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN1_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.88" name="">
+            <Test id="1.4.1.88">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_PO_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN1_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B SICD_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN1_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B SICD_B</Event>
+                  <Event>execGoSeconds 1 7</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN1_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.89" name="">
+            <Test id="1.4.1.89">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBC1_LB2N</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN2 PT4 PT2 PT6 PT8 SICD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN2 PT4 PT2 PT6 PT8 SICD</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.90" name="">
+            <Test id="1.4.1.90">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBC1_LB2N_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIN2 PT4 PT2 PT6 PT8 SICD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN2 PT4 PT2 PT6 PT8 SICD</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.91" name="">
+            <Test id="1.4.1.91">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBC2_LB2ND</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN2 PT4 PT2 SIC</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN2 PT4 PT2 SIC</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.92" name="">
+            <Test id="1.4.1.92">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBC2_LB2ND_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIN2 PT4 PT2 SIC</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN2 PT4 PT2 SIC</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.93" name="">
+            <Test id="1.4.1.93">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBC1_LB2N</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN3 PT4 PT2 PT6 PT8 PT10 PT12 SICD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN3 PT4 PT2 PT6 PT8 PT10 PT12 SICD</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN3: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.94" name="">
+            <Test id="1.4.1.94">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LBC1_LB2N_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIN3 PT4 PT2 PT6 PT8 PT10 PT12 SICD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN3 PT4 PT2 PT6 PT8 PT10 PT12 SICD</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN3: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.95" name="">
+            <Test id="1.4.1.95">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_PO_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN3_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B PT29_B PT31_B SICD_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN3_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B PT29_B PT31_B SICD_B</Event>
+                  <Event>execGoSeconds 1 7</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN3_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.96" name="">
+            <Test id="1.4.1.96">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_PO_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LP_B Free</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN3_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B PT29_B PT31_B SICD_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN3_B PT2_B PT4_B PT16_B PT18_B PT28_B PT30_B PT40_B PT29_B PT31_B SICD_B</Event>
+                  <Event>execGoSeconds 1 7</Event>
+                  <Event>yardSetStatusTry 1 KC_PABCD_LN_B Occ</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN3_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.97" name="">
+            <Test id="1.4.1.97">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIND PT1 PT3 PT5 PT7 PT23 PT25 SINM4</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIND PT1 PT3 PT5 PT7 PT23 PT25 SINM4</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIND: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.98" name="">
+            <Test id="1.4.1.98">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIND PT1 PT3 PT5 PT7 PT23 PT25 SINM4</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIND PT1 PT3 PT5 PT7 PT23 PT25 SINM4</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIND: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.99" name="">
+            <Test id="1.4.1.99">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIND PT1 PT3 PT5 PT7 SINM2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIND PT1 PT3 PT5 PT7 SINM2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIND: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.100" name="">
+            <Test id="1.4.1.100">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIND PT1 PT3 PT5 PT7 SINM2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIND PT1 PT3 PT5 PT7 SINM2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIND: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.101" name="">
+            <Test id="1.4.1.101">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIND_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIN2_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIND_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIN2_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIND_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.102" name="">
+            <Test id="1.4.1.102">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIND_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIN2_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIND_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIN2_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIND_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.103" name="">
+            <Test id="1.4.1.103">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM1 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM1 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.104" name="">
+            <Test id="1.4.1.104">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM1 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM1 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.105" name="">
+            <Test id="1.4.1.105">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM1 PT19 PT17 PT21 SIN1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM1 PT19 PT17 PT21 SIN1</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.106" name="">
+            <Test id="1.4.1.106">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM1 PT19 PT17 PT21 SIN1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM1 PT19 PT17 PT21 SIN1</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM1: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.107" name="">
+            <Test id="1.4.1.107">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB1CD_LBN1</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM19 PT7A PT5A PT9A PT13A PT15A SI1CD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM19 PT7A PT5A PT9A PT13A PT15A SI1CD</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM19: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.108" name="">
+            <Test id="1.4.1.108">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB1CD_LBN1_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM19 PT7A PT5A PT9A PT13A PT15A SI1CD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM19 PT7A PT5A PT9A PT13A PT15A SI1CD</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM19: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.109" name="">
+            <Test id="1.4.1.109">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM2 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM2 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.110" name="">
+            <Test id="1.4.1.110">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM2 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM2 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.111" name="">
+            <Test id="1.4.1.111">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM2 PT15 PT13 PT19 PT17 PT21 SIN1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM2 PT15 PT13 PT19 PT17 PT21 SIN1</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.112" name="">
+            <Test id="1.4.1.112">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM2 PT15 PT13 PT19 PT17 PT21 SIN1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM2 PT15 PT13 PT19 PT17 PT21 SIN1</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.113" name="">
+            <Test id="1.4.1.113">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM2 PT15 PT13 PT19 PT17 SIN2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM2 PT15 PT13 PT19 PT17 SIN2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.114" name="">
+            <Test id="1.4.1.114">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM2 PT15 PT13 PT19 PT17 SIN2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM2 PT15 PT13 PT19 PT17 SIN2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM2: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.115" name="">
+            <Test id="1.4.1.115">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB1CD_LBN1</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM20 PT7A PT5A PT9A PT11A PT13A PT15A SI1CD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM20 PT7A PT5A PT9A PT11A PT13A PT15A SI1CD</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM20: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.116" name="">
+            <Test id="1.4.1.116">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB1CD_LBN1_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM20 PT7A PT5A PT9A PT11A PT13A PT15A SI1CD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM20 PT7A PT5A PT9A PT11A PT13A PT15A SI1CD</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM20: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.117" name="">
+            <Test id="1.4.1.117">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB1CD_LBN1</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM21 PT7A PT5A PT9A PT11A PT13A PT15A SI1CD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM21 PT7A PT5A PT9A PT11A PT13A PT15A SI1CD</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM21: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.118" name="">
+            <Test id="1.4.1.118">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB1CD_LBN1_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM21 PT7A PT5A PT9A PT11A PT13A PT15A SI1CD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM21 PT7A PT5A PT9A PT11A PT13A PT15A SI1CD</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM21: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.119" name="">
+            <Test id="1.4.1.119">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM3A PT2A PT4A SI1N1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM3A PT2A PT4A SI1N1</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM3A: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.120" name="">
+            <Test id="1.4.1.120">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM3A PT2A PT4A SI1N1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM3A PT2A PT4A SI1N1</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM3A: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.121" name="">
+            <Test id="1.4.1.121">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM4 PT11 PT9 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM4 PT11 PT9 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM4: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.122" name="">
+            <Test id="1.4.1.122">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM4 PT11 PT9 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM4 PT11 PT9 PT15 PT13 PT19 PT17 PT21 PT12 PT10 SIN3</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM4: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.123" name="">
+            <Test id="1.4.1.123">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM4 PT11 PT9 PT15 PT13 PT19 PT17 PT21 SIN1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM4 PT11 PT9 PT15 PT13 PT19 PT17 PT21 SIN1</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM4: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.124" name="">
+            <Test id="1.4.1.124">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM4 PT11 PT9 PT15 PT13 PT19 PT17 PT21 SIN1</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM4 PT11 PT9 PT15 PT13 PT19 PT17 PT21 SIN1</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM4: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.125" name="">
+            <Test id="1.4.1.125">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINM4 PT9 PT11 PT15 PT13 PT19 PT17 SIN2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM4 PT9 PT11 PT15 PT13 PT19 PT17 SIN2</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM4: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.126" name="">
+            <Test id="1.4.1.126">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINM4 PT9 PT11 PT15 PT13 PT19 PT17 SIN2</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINM4 PT9 PT11 PT15 PT13 PT19 PT17 SIN2</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINM4: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.127" name="">
+            <Test id="1.4.1.127">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINMA PT6A PT8A PT10A PT12A SINM19</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINMA PT6A PT8A PT10A PT12A SINM19</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINMA: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.128" name="">
+            <Test id="1.4.1.128">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINMA PT6A PT8A PT10A PT12A SINM19</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINMA PT6A PT8A PT10A PT12A SINM19</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINMA: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.129" name="">
+            <Test id="1.4.1.129">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINMA PT6A PT8A PT10A PT12A SINM20</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINMA PT6A PT8A PT10A PT12A SINM20</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINMA: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.130" name="">
+            <Test id="1.4.1.130">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINMA PT6A PT8A PT10A PT12A SINM20</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINMA PT6A PT8A PT10A PT12A SINM20</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINMA: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.131" name="">
+            <Test id="1.4.1.131">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINMA PT6A PT8A PT10A PT14A PT16A SINM21</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINMA PT6A PT8A PT10A PT14A PT16A SINM21</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINMA: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.132" name="">
+            <Test id="1.4.1.132">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINMA PT6A PT8A PT10A PT14A PT16A SINM21</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINMA PT6A PT8A PT10A PT14A PT16A SINM21</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINMA: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.133" name="">
+            <Test id="1.4.1.133">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB1CD_LBN1</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SINMA PT6A PT8A PT7A PT5A SI1CD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINMA PT6A PT8A PT7A PT5A SI1CD</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINMA: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.134" name="">
+            <Test id="1.4.1.134">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 LB1CD_LBN1_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SINMA PT6A PT8A PT7A PT5A SI1CD</Event>
+                  <Event>cosCmdSeconds 1 2 POK SINMA PT6A PT8A PT7A PT5A SI1CD</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SINMA: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.135" name="">
+            <Test id="1.4.1.135">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIN2_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIN2_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.136" name="">
+            <Test id="1.4.1.136">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIN2_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT13_B PT23_B SIN2_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.137" name="">
+            <Test id="1.4.1.137">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT15_B PT29_B PT31_B SIN3_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT15_B PT29_B PT31_B SIN3_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.138" name="">
+            <Test id="1.4.1.138">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT15_B PT29_B PT31_B SIN3_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT15_B PT29_B PT31_B SIN3_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.139" name="">
+            <Test id="1.4.1.139">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP</Event>
+                  <Event>execGoSeconds 1 2</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>cosCmdSeconds 1 2 UPB SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT15_B SIN1_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT15_B SIN1_B</Event>
+                  <Event>execGoSeconds 1 200</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+         <TestCase id="1.4.1.140" name="">
+            <Test id="1.4.1.140">
+               <Comment>-</Comment>
+               <InitEvents>
+                  <Event>ilsCheckpointRead 1 StartCP_PLUS</Event>
+                  <Event>execGoCycles 1 45</Event>
+               </InitEvents>
+               <TestEvents>
+                  <Event>execGoSeconds 1 5</Event>
+                  <Event>cosCmdSeconds 1 2 UPB SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT15_B SIN1_B</Event>
+                  <Event>cosCmdSeconds 1 2 POK SIN_B PT1_B PT3_B PT5_B PT7_B PT9_B PT11_B PT15_B SIN1_B</Event>
+                  <Event>execGoSeconds 1 250</Event>
+               </TestEvents>
+               <ExpectedResults>
+                  <Result>SIN_B: UPB_LCK</Result>
+               </ExpectedResults>
+            </Test>
+         </TestCase>
+      </TestSuite>
+   </Function>
+</Functions>
